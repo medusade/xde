@@ -1206,31 +1206,30 @@ public:
 
 /**
  **********************************************************************
- *  Class: cNotNoTFunction
+ *  Class: cNotWhatTFunction
  *
  * Author: $author$
- *   Date: 1/12/2009
+ *   Date: 5/30/2017
  **********************************************************************
  */
-class cNotNoTFunction
-: public cTFunction
-{
+class cNotWhatTFunction: public cTFunction {
+protected:
+    const char* m_what;
 public:
     typedef cTFunction cExtends;
-
     /**
      **********************************************************************
-     * Constructor: cNotNoTFunction
+     * Constructor: cNotWhatTFunction
      *
      *      Author: $author$
-     *        Date: 1/12/2009
+     *        Date: 5/30/2017
      **********************************************************************
      */
-    cNotNoTFunction(const char* name, const char* description)
-    : cExtends(name, description)
-    {
-        static cTFunctionParameter parameter[] 
-        = {{"cond,...","return condition is not 'no'"},
+    cNotWhatTFunction
+    (const char* name, const char* description, const char* what)
+    : cExtends(name, description), m_what(what) {
+        static cTFunctionParameter parameter[]
+        = {{"cond,...","return condition is not [what]"},
            {0,0}};
         m_parameters = (sizeof(parameter)/sizeof(cTFunctionParameter))-1;
         m_parameter = parameter;
@@ -1240,32 +1239,102 @@ public:
      * Function: Expand
      *
      *   Author: $author$
-     *     Date: 1/12/2009
+     *     Date: 5/30/2017
      **********************************************************************
      */
     virtual eError Expand
-    (cCharStreamInterface &result, cTInterface &t, 
-     const cTFunctionArgumentList& arglist) const
-    {
-        const char* no = "no";
-        cTFunctionArgument *cond;
-        const char* chars;
-        TLENGTH length;
-        int unequal;
+    (cCharStreamInterface &result, cTInterface &t,
+     const cTFunctionArgumentList& arglist) const {
+        const char* what = 0;
+        cTFunctionArgument *cond = 0;
+        const char* chars = 0;
+        TLENGTH length = 0;
+        int unequal = 0;
 
-        if ((cond = arglist.GetFirstItem()))
-        do
-        {
-            if ((0 < (length = cond->GetLength())) 
-                && (unequal = cond->Compare(no)))
-            if ((chars = cond->GetBuffer()))
-                result.Write(chars, length);
+        if ((cond = arglist.GetFirstItem())) {
+            if (!(what = m_what)) {
+                if ((what = cond->GetBuffer())) {
+                    if (!(what[0])) {
+                        what = 0;
+                    }
+                }
+                cond = cond->GetNextItem();
+            }
+            if ((what) && (cond)) {
+                do {
+                    if ((0 < (length = cond->GetLength()))
+                        && (unequal = cond->Compare(what))) {
+                        if ((chars = cond->GetBuffer())) {
+                            result.Write(chars, length);
+                        }
+                    }
+                } while ((cond = cond->GetNextItem()));
+            }
         }
-        while ((cond = cond->GetNextItem()));
         return e_ERROR_NONE;
+    }
+} g_cNotWhatTFunction
+  ("not-what","not-what(what,cond,...)", 0);
+
+/**
+ **********************************************************************
+ *  Class: cNotNoTFunction
+ *
+ * Author: $author$
+ *   Date: 1/12/2009
+ **********************************************************************
+ */
+class cNotNoTFunction: public cNotWhatTFunction {
+public:
+    typedef cNotWhatTFunction cExtends;
+    /**
+     **********************************************************************
+     * Constructor: cNotNoTFunction
+     *
+     *      Author: $author$
+     *        Date: 1/12/2009
+     **********************************************************************
+     */
+    cNotNoTFunction(const char* name, const char* description)
+    : cExtends(name, description, "no") {
+        static cTFunctionParameter parameter[] 
+        = {{"cond,...","return condition is not 'no'"},
+           {0,0}};
+        m_parameters = (sizeof(parameter)/sizeof(cTFunctionParameter))-1;
+        m_parameter = parameter;
     }
 } g_cNotNoTFunction
   ("not-no","not-no(cond,...)");
+
+/**
+ **********************************************************************
+ *  Class: cNotYesTFunction
+ *
+ * Author: $author$
+ *   Date: 5/30/2017
+ **********************************************************************
+ */
+class cNotYesTFunction: public cNotWhatTFunction {
+public:
+    typedef cNotWhatTFunction cExtends;
+    /**
+     **********************************************************************
+     * Constructor: cNotYesTFunction
+     *
+     *      Author: $author$
+     *        Date: 5/30/2017
+     **********************************************************************
+     */
+    cNotYesTFunction(const char* name, const char* description)
+    : cExtends(name, description, "yes") {
+        static cTFunctionParameter parameter[]
+        = {{"cond,...","return condition is not 'yes'"},
+           {0,0}};
+        m_parameters = (sizeof(parameter)/sizeof(cTFunctionParameter))-1;
+        m_parameter = parameter;
+    }
+} g_cNotYesTFunction
+  ("not-yes","not-yes(cond,...)");
 
 /**
  **********************************************************************
