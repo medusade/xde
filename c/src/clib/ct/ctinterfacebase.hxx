@@ -33,12 +33,14 @@
  *   Date: 8/2/2003
  **********************************************************************
  */
+typedef int eTError;
 enum
 {
     e_FIRST_T_ERROR = e_NEXT_ERROR,
 
     e_ERROR_EXPAND = e_FIRST_T_ERROR,
     e_ERROR_BREAK,
+    e_ERROR_EXIT,
 
     e_NEXT_T_ERROR,
     e_LAST_T_ERROR = e_NEXT_T_ERROR-1

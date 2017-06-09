@@ -86,7 +86,11 @@ public:
             DBE("() failed on m_t.Initialize()\n");
         else
         {
-            err = cExtends::Main(argc, argv, env);
+            try {
+                err = cExtends::Main(argc, argv, env);
+            } catch (const cTException& e) {
+                DBT("()...caught const cTException& e(%d)\n", e.Error());
+            }
 
             if ((error = m_t.Finalize()))
                 DBE("() failed on m_t.Finalize()\n");

@@ -248,11 +248,16 @@ public:
 
                 SetTVariablesFromForm(m_t);
 
-                if ((error = m_t.Expand(m_cgiStream, m_templateFile)))
-                    OutputContentL
-                    (H1_, m_cgiNameChars, _H1, 
-                     B_, "failed to expand template file \"", _B, 
-                     m_templateFileNameChars, B_, "\"", _B, BR, NULL_POINTER);
+                try {
+                    if ((error = m_t.Expand(m_cgiStream, m_templateFile))) {
+                        OutputContentL
+                        (H1_, m_cgiNameChars, _H1,
+                         B_, "failed to expand template file \"", _B,
+                         m_templateFileNameChars, B_, "\"", _B, BR, NULL_POINTER);
+                    }
+                } catch (const cTException& e) {
+                    DBT("()...caught const cTException& e(%d)\n", e.Error());
+                }
 
                 m_templateFile.Close(true);
             }

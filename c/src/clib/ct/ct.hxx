@@ -28,6 +28,7 @@
 #include "ctfunctionargument.hxx"
 #include "ctfunction.hxx"
 #include "ctvariable.hxx"
+#include "ctexception.hxx"
 #include "cbuffer.hxx"
 #include "cbase.hxx"
 
