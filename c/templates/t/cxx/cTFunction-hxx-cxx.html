@@ -1,0 +1,70 @@
+<!--========================================================================-->
+<!-- Copyright (c) 1988-2017 $organization$                                 -->
+<!--                                                                        -->
+<!-- This software is provided by the author and contributors ``as is''     -->
+<!-- and any express or implied warranties, including, but not limited to,  -->
+<!-- the implied warranties of merchantability and fitness for a particular -->
+<!-- purpose are disclaimed. In no event shall the author or contributors   -->
+<!-- be liable for any direct, indirect, incidental, special, exemplary,    -->
+<!-- or consequential damages (including, but not limited to, procurement   -->
+<!-- of substitute goods or services; loss of use, data, or profits; or     -->
+<!-- business interruption) however caused and on any theory of liability,  -->
+<!-- whether in contract, strict liability, or tort (including negligence   -->
+<!-- or otherwise) arising in any way out of the use of this software,      -->
+<!-- even if advised of the possibility of such damage.                     -->
+<!--                                                                        -->
+<!--   File: cTFunction-hxx.html                                            -->
+<!--                                                                        -->
+<!-- Author: $author$                                                       -->
+<!--   Date: 5/31/2017                                                      -->
+<!--========================================================================-->
+<html>
+    <!--========================================================================-->
+    <!-- head                                                                   -->
+    <!--========================================================================-->
+    <head>
+        <title>Create Xde C++ cTFunction</title>
+        <!--========================================================================-->
+        <!-- style                                                                  -->
+        <!--========================================================================-->
+        <style
+         type="text/css">
+        </style>
+        <!--========================================================================-->
+        <!-- script                                                                 -->
+        <!--========================================================================-->
+        <script language="javaScript" src="../../js/html-form.js"></script>
+        <script
+         language="JavaScript"
+         type="text/JavaScript">
+        </script>
+    </head>
+
+    <!--========================================================================-->
+    <!-- body                                                                   -->
+    <!--========================================================================-->
+    <body>
+        <h3>Create Xde C++ cTFunction</h3>
+        <hr>
+        <!--========================================================================-->
+        <!-- form                                                                   -->
+        <!--========================================================================-->
+        <form
+         Action="form-html.t"
+         Method="POST"
+         Name="Form"
+         onSubmit="return setFormSubmit(getFormValue('FormAction','Form'),getFormValue('FormMethod','Form'),'Form')">
+            Name: <input name="Name" value="Name"/><br/>
+            Parameters: <input name="..." value=""/><br/>
+            Description: <input name="%name%(%parameters%)" value=""/><br/>
+            File: <input name="File" value="c%Name%TFunction"/><br/><br/>
+            Action: <input name="FormAction" value="cTFunction-hxx.t"/><br/>
+            Accept-charset: <input name="Accept-charset" value=""/><br/>
+            Enctype: <input name="Enctype" value=""/><br/>
+            Method: <input name="FormMethod" value="POST"/><br/>
+            Target: <input name="Target" value=""/><br/>
+            <hr/>
+            <input type="submit" name="submit" value="submit"/><br/>
+        </form>
+    </body>
+</html>
