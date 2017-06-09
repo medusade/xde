@@ -59,6 +59,8 @@ EXE_CXX_SOURCES = \
 $(PKG)/$(SRC)/clib/ccgi/cgi.cxx \
 $(PKG)/$(SRC)/clib/ct/ctcgi.cxx \
 $(PKG)/$(SRC)/clib/ct/ctfunctions.cxx \
+$(PKG)/$(SRC)/clib/ct/ctconditionalfunctions.cxx \
+$(PKG)/$(SRC)/clib/ct/ctstringfunctions.cxx \
 $(PKG)/$(SRC)/clib/ct/ctfilefunctions.cxx \
 $(PKG)/$(SRC)/clib/ct/ctdatefunctions.cxx \
 

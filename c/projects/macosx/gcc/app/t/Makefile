@@ -62,6 +62,8 @@ EXE_C_SOURCES = \
 EXE_CXX_SOURCES = \
 $(PKG)/$(SRC)/clib/ct/ctdatefunctions.cxx \
 $(PKG)/$(SRC)/clib/ct/ctfilefunctions.cxx \
+$(PKG)/$(SRC)/clib/ct/ctstringfunctions.cxx \
+$(PKG)/$(SRC)/clib/ct/ctconditionalfunctions.cxx \
 $(PKG)/$(SRC)/clib/ct/ctfunctions.cxx \
 $(PKG)/$(SRC)/clib/ct/ctmain.cxx \
 $(PKG)/$(SRC)/clib/cos/argmain.cxx \

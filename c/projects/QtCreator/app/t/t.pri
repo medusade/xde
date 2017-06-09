@@ -26,15 +26,21 @@ t_DEFINES += \
 t_HEADERS += \
 $${XDE_SRC}/clib/ct/ctdatefunctions.hxx \
 $${XDE_SRC}/clib/ct/ctfilefunctions.hxx \
+$${XDE_SRC}/clib/ct/ctconditionalfunctions.hxx \
+$${XDE_SRC}/clib/ct/ctstringfunctions.hxx \
 $${XDE_SRC}/clib/ct/ctfunctions.hxx \
 $${XDE_SRC}/clib/ct/ctmain.hxx \
+$${XDE_SRC}/clib/ct/ctexception.hxx \
 $${XDE_SRC}/clib/cos/argmain.hxx \
 
 t_SOURCES += \
 $${XDE_SRC}/clib/ct/ctdatefunctions.cxx \
 $${XDE_SRC}/clib/ct/ctfilefunctions.cxx \
+$${XDE_SRC}/clib/ct/ctconditionalfunctions.cxx \
+$${XDE_SRC}/clib/ct/ctstringfunctions.cxx \
 $${XDE_SRC}/clib/ct/ctfunctions.cxx \
 $${XDE_SRC}/clib/ct/ctmain.cxx \
+$${XDE_SRC}/clib/ct/ctexception.cxx \
 $${XDE_SRC}/clib/cos/argmain.cxx \
 $${XDE_SRC}/clib/cos/cdebug_printf.c \
 
