@@ -24,12 +24,4 @@
 #define _CTSTRINGFUNCTIONS_HXX
 #include "ctfunctions.hxx"
 
-#if defined(c_NAMESPACE)
-namespace c_NAMESPACE {
-#endif /* defined(c_NAMESPACE) */
-
-#if defined(c_NAMESPACE)
-}
-#endif /* defined(c_NAMESPACE) */
-
 #endif /* _CTSTRINGFUNCTIONS_HXX */

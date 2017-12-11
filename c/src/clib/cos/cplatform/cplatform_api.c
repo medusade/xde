@@ -14,11 +14,26 @@
  * or otherwise) arising in any way out of the use of this software, 
  * even if advised of the possibility of such damage.
  *
- *   File: ctstringfunctions.cxx
+ *   File: cplatform_api.c
  *
  * Author: $author$
- *   Date: 5/31/2017
+ *   Date: 12/8/2017
  **********************************************************************
  */
-#include "ctstringfunctions.hxx"
+#include "cplatform_api.h"
 
+#if defined(WIN32) 
+/** 
+ * Windows 
+ */
+/*
+ * Windows
+ **/
+#else /* defined(WIN32) */
+/**
+ * Unix
+ */
+/*
+ * Unix
+ **/
+#endif /* defined(WIN32) */

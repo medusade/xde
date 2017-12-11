@@ -87,4 +87,42 @@ public:
     typedef cInterfaceBase cImplements;
     typedef cImplementBase cDerives;
 };
+
+/**
+ **********************************************************************
+ *  Class: cInstanceBase
+ *
+ * Author: $author$
+ *   Date: 12/10/2017
+ **********************************************************************
+ */
+class cInstanceBase
+: virtual public cImplementBase
+{
+public:
+    typedef cImplementBase cImplements;
+    /**
+     **********************************************************************
+     * Constructor: cInstanceBase
+     *
+     *      Author: $author$
+     *        Date: 12/10/2017
+     **********************************************************************
+     */
+    cInstanceBase()
+    {
+    }
+    /**
+     **********************************************************************
+     * Destructor: ~cInstanceBase
+     *
+     *     Author: $author$
+     *       Date: 12/10/2017
+     **********************************************************************
+     */
+    virtual ~cInstanceBase()
+    {
+    }
+};
+
 #endif /* _CINTERFACEBASE_HXX */

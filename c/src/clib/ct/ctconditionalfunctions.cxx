@@ -23,10 +23,6 @@
 #include "ctconditionalfunctions.hxx"
 #include "ctexception.hxx"
 
-#if defined(c_NAMESPACE)
-namespace c_NAMESPACE {
-#endif /* defined(c_NAMESPACE) */
-
 /**
  **********************************************************************
  *  Class: cExitTFunction
@@ -73,7 +69,3 @@ public:
    }
 } g_cExitTFunction
  ("exit","exit(...)");
-
-#if defined(c_NAMESPACE)
-}
-#endif /* defined(c_NAMESPACE) */

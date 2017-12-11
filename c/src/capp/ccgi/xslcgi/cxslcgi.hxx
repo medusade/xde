@@ -187,10 +187,16 @@ public:
             {
                 eError xslTransformerError = e_ERROR_NONE;
 
-                if (0 <= (length = SetXSLTLiteralParametersFromForm(*m_xslTransformer)))
-                if (0 <= (length = m_xslTransformerErrors.Clear()))
-                if (m_templateFileNameChars)
-                if (m_documentFileNameChars)
+                m_xslTransformerErrors.Clear();        
+                
+                if (0 > (length = SetXSLTLiteralParametersFromForm(*m_xslTransformer)))
+                {
+                    OutputContentL
+                    (H1_, m_cgiNameChars, _H1, 
+                     B_, "...failed on SetXSLTLiteralParametersFromForm()", _B, BR, NULL_POINTER);
+                }
+                else 
+                if ((m_templateFileNameChars) && (m_documentFileNameChars))
                 {
                     if ((m_documentFilePathChars = GetDocumentFilePath
                         (length)) && (0 < length))
@@ -246,15 +252,23 @@ public:
                         xslTransformerError = m_xslTransformer->TransformFile
                         (m_xslTransformerErrors, m_outputContentWriter,
                          m_templateFileNameChars, m_documentFileNameChars);
+                        
+                        if (xslTransformerError)
+                        {
+                            if ((chars = m_xslTransformerErrors.HasChars(length)))
+                                OutputContentL
+                                (H1_, m_cgiNameChars, _H1, 
+                                 B_, "...XSL transformer error", _B, BR, B_, "(", _B, chars, B_, ")", _B, BR, BR,
+                                 B_, "...on TransformFile", _B, BR, B_, "(..., xsl = \"", _B, m_templateFileNameChars, 
+                                 B_, "\",", _B, BR, B_, " xml = \"", _B, m_documentFileNameChars, B_, "\")", _B, BR, NULL_POINTER);
+                            else
+                                OutputContentL
+                                (H1_, m_cgiNameChars, _H1, 
+                                 B_, "...failed on TransformFile", _B, BR, B_, "(..., xsl = \"", _B, m_templateFileNameChars, 
+                                 B_, "\",", _B, BR, B_, " xml = \"", _B, m_documentFileNameChars, B_, "\")", _B, BR, NULL_POINTER);
+                        }
                     }
                 }
-
-                if (xslTransformerError)
-                if ((chars = m_xslTransformerErrors.HasChars(length)))
-                    OutputContentL
-                    (H1_, m_cgiNameChars, _H1, 
-                     B_, "XSL transformer error (", _B, chars, B_, ")", _B, BR, NULL_POINTER);
-
                 m_xslTransformer->Finalize();
             }
             cXSLTransformerInterface::DestroyInstance(*m_xslTransformer);

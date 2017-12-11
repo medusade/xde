@@ -14,11 +14,11 @@
  * or otherwise) arising in any way out of the use of this software, 
  * even if advised of the possibility of such damage.
  *
- *   File: ctstringfunctions.cxx
+ *   File: cxmlnodeinterface.hxx
  *
  * Author: $author$
- *   Date: 5/31/2017
+ *   Date: 12/10/2017
  **********************************************************************
  */
-#include "ctstringfunctions.hxx"
+#include "cxmlnodeinterface.hxx"
 

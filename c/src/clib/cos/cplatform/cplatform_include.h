@@ -14,11 +14,49 @@
  * or otherwise) arising in any way out of the use of this software, 
  * even if advised of the possibility of such damage.
  *
- *   File: ctstringfunctions.cxx
+ *   File: cplatform_include.h
  *
  * Author: $author$
- *   Date: 5/31/2017
+ *   Date: 12/8/2017
  **********************************************************************
  */
-#include "ctstringfunctions.hxx"
+#ifndef _CPLATFORM_INCLUDE_H
+#define _CPLATFORM_INCLUDE_H
+
+#include "cplatform_build.h"
+
+#if defined(WIN32) 
+/** 
+ * Windows 
+ */
+#include <windows.h>
+#include <windowsx.h>
+#include <tchar.h>
+#include <wchar.h>
+/*
+ * Windows
+ **/
+#else /* defined(WIN32) */
+/**
+ * Unix
+ */
+#include <unistd.h>
+#include <stdint.h>
+#include <stdlib.h>
+/*
+ * Unix
+ **/
+#endif /* defined(WIN32) */
+
+#if defined(__cplusplus)
+extern "C" {
+#endif /* defined(__cplusplus) */
+
+#if defined(__cplusplus)
+}
+#endif /* defined(__cplusplus) */
+
+#endif /* _CPLATFORM_INCLUDE_H */
+
+        
 
