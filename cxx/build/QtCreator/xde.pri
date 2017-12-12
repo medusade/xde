@@ -21,6 +21,39 @@
 # build QtCreator .pri file for xde
 ########################################################################
 
+HOME = /Users/jboyd
+
+########################################################################
+# libxml2
+#
+# pkg-config --cflags --libs libxml2
+#
+build_libxml2_INCLUDEPATH += \
+$${HOME}/build/libxml2/include/libxml2 \
+
+build_libxml2_DEFINES += \
+
+build_libxml2_LIBS += \
+-L$${HOME}/build/libxml2/lib \
+-lxml2 \
+
+########################################################################
+# libxslt
+#
+# pkg-config --cflags --libs libxslt
+#
+build_libxslt_INCLUDEPATH += \
+$${HOME}/build/libxslt/include \
+$${build_libxml2_INCLUDEPATH} \
+
+build_libxslt_DEFINES += \
+
+build_libxslt_LIBS += \
+-L$${HOME}/build/libxslt/lib \
+-lxslt \
+-lexslt \
+$${build_libxml2_LIBS} \
+
 ########################################################################
 # rostra
 #
@@ -36,13 +69,12 @@ build_rostra_LIBS += \
 # xde
 build_xde_INCLUDEPATH += \
 $${build_rostra_INCLUDEPATH} \
-
+$${build_libxslt_INCLUDEPATH} \
+$${build_libxml2_INCLUDEPATH} \
 
 build_xde_DEFINES += \
 $${build_rostra_DEFINES} \
 
-
 build_xde_LIBS += \
 $${build_rostra_LIBS} \
-
 

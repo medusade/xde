@@ -25,6 +25,14 @@ OTHER_PKG = ../../../../../../../..
 OTHER_BLD = ..
 
 ########################################################################
+# libxslt
+libxslt_INCLUDEPATH += \
+$${build_libxslt_INCLUDEPATH} \
+
+libxslt_LIBS += \
+$${build_libxslt_LIBS} \
+
+########################################################################
 # rostra
 ROSTRA_PKG = $${OTHER_PKG}/rostra/cpp/xos
 ROSTRA_PRJ = $${ROSTRA_PKG}
@@ -46,6 +54,7 @@ XDE_PRJ = $${XDE_PKG}
 XDE_BIN = $${XDE_BLD}/bin
 XDE_LIB = $${XDE_BLD}/lib
 XDE_SRC = $${XDE_PKG}/../c/src
+XDE_CPP_SRC = $${XDE_PKG}/../cpp/src
 
 CONFIG(debug, debug|release) {
 BUILD_CONFIG = Debug
@@ -54,6 +63,14 @@ xde_DEFINES += DEBUG_BUILD
 BUILD_CONFIG = Release
 xde_DEFINES += RELEASE_BUILD
 }
+
+XDE_CPP_INCLUDES += \
+$${XDE_CPP_SRC}/clib/clibc/clibxml2/clibxslt \
+$${XDE_CPP_SRC}/clib/cxml/cxslt \
+$${XDE_CPP_SRC}/clib/cxml \
+$${XDE_CPP_SRC}/clib/cxttp \
+$${XDE_CPP_SRC}/clib/cos \
+$${XDE_CPP_SRC}/clib/cbase \
 
 XDE_CSERVER_INCLUDES = \
 $${XDE_SRC}/clib/cserver \
@@ -91,6 +108,7 @@ $${XDE_CXSL_INCLUDES} \
 $${XDE_CT_INCLUDES} \
 $${XDE_COS_INCLUDES} \
 $${XDE_CLIB_INCLUDES} \
+$${XDE_CPP_INCLUDES} \
 
 xde_INCLUDEPATH += \
 $${XDE_INCLUDES} \
@@ -117,4 +135,3 @@ xde_t_LIBS += \
 xde_yy_LIBS += \
 -L$${XDE_LIB}/libxdeyy \
 -lxdeyy \
-

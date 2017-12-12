@@ -21,6 +21,7 @@
 # MacOSX QtCreator .pri file for xde
 ########################################################################
 XDE_OS = macosx
+
 #QMAKE_CXXFLAGS += -std=c++11
 #QMAKE_CXXFLAGS += -std=c++0x
 
@@ -44,5 +45,3 @@ $${rostra_LIBS} \
 $${build_xde_LIBS} \
 -lpthread \
 -ldl \
-
-
