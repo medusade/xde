@@ -26,6 +26,9 @@
 /* Content type dependant macros used for formatting
  * output back to the browser.
  */
+#undef AMP
+#undef LT
+#undef GT
 #undef BR
 #undef H1_
 #undef _H1
@@ -34,6 +37,9 @@
 #undef UL_
 #undef _UL
 
+#define AMP ((CTHIS GetContentType()==CTHIS GetContentTypeHTML())?"&amp;":"&")
+#define LT ((CTHIS GetContentType()==CTHIS GetContentTypeHTML())?"&lt;":"<")
+#define GT ((CTHIS GetContentType()==CTHIS GetContentTypeHTML())?"&gt;":">")
 #define BR ((CTHIS GetContentType()==CTHIS GetContentTypeHTML())?"<br>\n":"\n")
 #define H1_ ((CTHIS GetContentType()==CTHIS GetContentTypeHTML())?"<h1>\n":"")
 #define _H1 ((CTHIS GetContentType()==CTHIS GetContentTypeHTML())?"</h1>\n":"\n\n")

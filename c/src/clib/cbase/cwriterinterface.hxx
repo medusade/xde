@@ -97,6 +97,25 @@ public:
      **********************************************************************
      */
     virtual TLength Put(TWhat what) = 0;
+    /**
+     **********************************************************************
+     * Function: WriteFormattedV
+     *
+     *   Author: $author$
+     *     Date: 12/12/2017
+     **********************************************************************
+     *
+    virtual TLength WriteFormattedV
+    (const TWhat* formatted, va_list va) = 0;*/
+    /**
+     **********************************************************************
+     * Function: Flush
+     *
+     *   Author: $author$
+     *     Date: 12/12/2017
+     **********************************************************************
+     *
+    virtual TLength Flush() = 0;*/
 };
 
 /**
@@ -260,6 +279,33 @@ public:
         TLength length = Write(&what, 1);
         return length;
     }
+    /**
+     **********************************************************************
+     * Function: WriteFormattedV
+     *
+     *   Author: $author$
+     *     Date: 12/12/2017
+     **********************************************************************
+     *
+    virtual TLength WriteFormattedV
+    (const TWhat* formatted, va_list va) 
+    {
+        TLength length = 0;
+        return length;
+    }*/
+    /**
+     **********************************************************************
+     * Function: Flush
+     *
+     *   Author: $author$
+     *     Date: 12/12/2017
+     **********************************************************************
+     *
+    virtual TLength Flush() 
+    {
+        TLength length = 0;
+        return length;
+    }*/
 };
 
 /**

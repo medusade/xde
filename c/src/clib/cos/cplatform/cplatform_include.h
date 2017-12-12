@@ -48,6 +48,8 @@
  **/
 #endif /* defined(WIN32) */
 
+#include <stdarg.h>
+
 #if defined(__cplusplus)
 extern "C" {
 #endif /* defined(__cplusplus) */

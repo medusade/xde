@@ -151,7 +151,7 @@ public:
      **********************************************************************
      */
     static eError DestroyInstance
-    (cXSLTransformerInterface& instance);
+    (cXSLTransformerInterface* instance);
 };
 
 typedef cInstanceImplementT

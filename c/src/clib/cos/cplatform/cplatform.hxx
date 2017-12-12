@@ -26,4 +26,21 @@
 
 #include "cplatform.h"
 
+#if defined(WIN32) 
+/* Windows
+ */
+#define c_INTERFACE_CLASS PLATFORM_EXPORT
+#define c_EXPORT_CLASS PLATFORM_EXPORT
+#define c_EXPORT PLATFORM_EXPORT
+#else /* defined(WIN32) */
+/* Unix
+ */
+#define c_INTERFACE_CLASS
+#define c_EXPORT_CLASS
+#define c_EXPORT
+#endif /* defined(WIN32) */
+
+#define c_INSTANCE_CLASS
+#define c_IMPLEMENT_CLASS
+
 #endif /* _CPLATFORM_HXX */

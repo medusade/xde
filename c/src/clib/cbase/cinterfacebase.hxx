@@ -24,22 +24,8 @@
 #ifndef _CINTERFACEBASE_HXX
 #define _CINTERFACEBASE_HXX
 
-#include "cplatform.h"
+#include "cplatform.hxx"
 #include "cerror.h"
-
-#if defined(WIN32) 
-/* Windows
- */
-#define c_INTERFACE_CLASS PLATFORM_EXPORT
-#define c_EXPORT_CLASS PLATFORM_EXPORT
-#define c_EXPORT PLATFORM_EXPORT
-#else /* defined(WIN32) */
-/* Unix
- */
-#define c_INTERFACE_CLASS
-#define c_EXPORT_CLASS
-#define c_EXPORT
-#endif /* defined(WIN32) */
 
 /**
  **********************************************************************

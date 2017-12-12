@@ -183,17 +183,26 @@ public:
 
         if ((m_xslTransformer = cXSLTransformerInterface::CreateInstance(error)))
         {
-            if (!(error = m_xslTransformer->Initialize()))
+            if ((error = m_xslTransformer->Initialize()))
+            {
+                OutputContentL
+                (H1_, m_cgiNameChars, _H1, 
+                 B_, "...failed on m_xslTransformer-", GT, "Initialize()", _B, BR, NULL_POINTER);
+            }
+            else
             {
                 eError xslTransformerError = e_ERROR_NONE;
 
                 m_xslTransformerErrors.Clear();        
                 
-                if (0 > (length = SetXSLTLiteralParametersFromForm(*m_xslTransformer)))
+                if (0 > (length = SetXSLTLiteralParametersFromForm
+                    (m_xslTransformerErrors, *m_xslTransformer)))
                 {
+                    chars = m_xslTransformerErrors.Chars(length);
                     OutputContentL
                     (H1_, m_cgiNameChars, _H1, 
-                     B_, "...failed on SetXSLTLiteralParametersFromForm()", _B, BR, NULL_POINTER);
+                     B_, "...failed on SetXSLTLiteralParametersFromForm", _B, BR, 
+                     B_, "(\"", _B, chars, B_, "\",...)", _B, BR, NULL_POINTER);
                 }
                 else 
                 if ((m_templateFileNameChars) && (m_documentFileNameChars))
@@ -269,9 +278,14 @@ public:
                         }
                     }
                 }
-                m_xslTransformer->Finalize();
+                if ((error  = m_xslTransformer->Finalize()))
+                {
+                    OutputContentL
+                    (H1_, m_cgiNameChars, _H1, 
+                     B_, "...failed on m_xslTransformer-", GT, "Finalize()", _B, BR, NULL_POINTER);
+                }
             }
-            cXSLTransformerInterface::DestroyInstance(*m_xslTransformer);
+            cXSLTransformerInterface::DestroyInstance(m_xslTransformer);
         }
         return err;
     }
@@ -284,7 +298,8 @@ public:
      **********************************************************************
      */
     virtual tLength SetXSLTLiteralParametersFromForm
-    (cXSLTransformerInterface& xslTransformer) 
+    (cCharWriterInterface& errors, 
+     cXSLTransformerInterface& xslTransformer) 
     {
         tLength count = 0;
         tLength  length;
@@ -303,7 +318,12 @@ public:
             if ((name = f->GetName(length)) && (0 < length))
             if ((value = f->GetValue(length)))
             if ((error = xslTransformer.SetLiteralParameter(name, value)))
+            {
+                errors.WriteL
+                ("...failed on xslTransformer.SetLiteralParameter",
+                 "(name = \"", name, "\", value = \"", value ,"\")", NULL_POINTER);
                 return count = -error;
+            }
             else count++;
         }
         while ((++i) != end);

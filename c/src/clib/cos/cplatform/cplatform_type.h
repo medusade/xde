@@ -178,6 +178,9 @@ typedef struct _SECURITY_ATTRIBUTES
  **/
 #endif /* defined(WIN32) */
 
+typedef CHAR char_t;
+typedef TCHAR tchar_t;
+
 #if !defined(CPLATFORM_NO_int) 
 typedef INT8 int8;
 typedef INT16 int16;
