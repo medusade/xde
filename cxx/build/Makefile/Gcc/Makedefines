@@ -21,18 +21,6 @@
 # build Gcc Makedefines for xde
 ########################################################################
 
-#
-# build OS
-#
-ifndef OS
-OS = linux
-endif
-
-#
-# install directory
-#
 ifndef INS
 INS = ${HOME}/build/xde
 endif
-
-

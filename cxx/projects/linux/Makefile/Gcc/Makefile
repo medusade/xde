@@ -20,12 +20,10 @@
 #
 # Linux Gcc Makefile for xde subdurs
 ########################################################################
-
-OS = linux
 PKG = ../../../..
 
 MAK = projects/Makefile/Gcc
-PRJ = projects/${OS}/Makefile/Gcc
+PRJ = projects/os/Makefile/Gcc
 SRC = src
 
 include $(PKG)/$(MAK)/Makedefines

@@ -36,6 +36,7 @@ $(PKG)/$(PRJ)/app/cgi \
 $(PKG)/$(PRJ)/app/t \
 $(PKG)/$(PRJ)/app/tcgi \
 $(PKG)/$(PRJ)/app/cxxlcgi \
+$(PKG)/$(PRJ)/app/bflex \
 
 include $(PKG)/$(PRJ)/Makedirs
 

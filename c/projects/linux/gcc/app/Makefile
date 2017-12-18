@@ -34,6 +34,8 @@ $(PKG)/$(PRJ)/app/cgi \
 $(PKG)/$(PRJ)/app/t \
 $(PKG)/$(PRJ)/app/tcgi \
 $(PKG)/$(PRJ)/app/cxxlcgi \
+$(PKG)/$(PRJ)/app/bflex \
+$(PKG)/$(PRJ)/app/byacc \
 
 #$(PKG)/$(PRJ)/app/xslcgi \
 
