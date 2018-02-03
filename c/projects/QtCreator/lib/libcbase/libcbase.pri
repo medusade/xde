@@ -25,6 +25,7 @@ $${xde_INCLUDEPATH} \
 libcbase_DEFINES += \
 $${xde_DEFINES} \
 
+########################################################################
 libcbase_HEADERS += \
 $${XDE_SRC}/clib/cbase/cbase.hxx \
 $${XDE_SRC}/clib/cbase/ccomparer.hxx \
@@ -124,6 +125,7 @@ $${XDE_SRC}/clib/cbase/cbinarytree.cxx \
 $${XDE_SRC}/clib/cbase/credblacktree.cxx \
 $${XDE_SRC}/clib/cos/cplatform/cplatform_string.c \
 
+########################################################################
 libcbase_LIBS += \
 -L$${XDE_LIB}/libcbase \
 -lcbase \

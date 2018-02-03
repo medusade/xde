@@ -23,6 +23,7 @@ libct_INCLUDEPATH += \
 
 libct_DEFINES += \
 
+########################################################################
 libct_HEADERS += \
 $${XDE_SRC}/clib/ct/ctvariableinterface.hxx \
 $${XDE_SRC}/clib/ct/ctvariable.hxx \
@@ -51,9 +52,7 @@ $${XDE_SRC}/clib/ct/ctfunctionargument.cxx \
 $${XDE_SRC}/clib/ct/ctinterface.cxx \
 $${XDE_SRC}/clib/ct/ct.cxx \
 
+########################################################################
 libct_LIBS += \
-
-
-
-        
-
+-L$${XDE_LIB}/libct \
+-lct \

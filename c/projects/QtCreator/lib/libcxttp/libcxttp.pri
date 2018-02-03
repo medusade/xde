@@ -23,6 +23,7 @@ libcxttp_INCLUDEPATH += \
 
 libcxttp_DEFINES += \
 
+########################################################################
 libcxttp_HEADERS += \
 $${XDE_SRC}/clib/cxttp/chttp.h \
 $${XDE_SRC}/clib/cxttp/cxttp.h \
@@ -41,9 +42,7 @@ $${XDE_SRC}/clib/cxttp/chttpformfield.cxx \
 $${XDE_SRC}/clib/cxttp/chttpformfieldinterface.cxx \
 $${XDE_SRC}/clib/cxttp/chttpurlencodedformfieldwriter.cxx \
 
+########################################################################
 libcxttp_LIBS += \
-
-
-
-        
-
+-L$${XDE_LIB}/libcxttp \
+-lcxttp \

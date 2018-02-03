@@ -23,6 +23,7 @@ libcfs_INCLUDEPATH += \
 
 libcfs_DEFINES += \
 
+########################################################################
 libcfs_HEADERS += \
 $${XDE_SRC}/clib/cos/cfileinterface.hxx \
 $${XDE_SRC}/clib/cos/cfile.hxx \
@@ -49,5 +50,6 @@ $${XDE_SRC}/clib/cos/cplatform/cplatform_stat.c \
 $${XDE_SRC}/clib/cos/cplatform/cplatform_path.c \
 $${XDE_SRC}/clib/cos/cplatform/cplatform_file.c \
 
+########################################################################
 libcfs_LIBS += \
 

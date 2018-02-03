@@ -25,6 +25,7 @@ $${xde_INCLUDEPATH} \
 libcos_DEFINES += \
 $${xde_DEFINES} \
 
+########################################################################
 libcos_HEADERS += \
 $${libcfs_HEADERS} \
 $${libcipc_HEADERS} \
@@ -53,4 +54,7 @@ $${XDE_SRC}/clib/cos/cmainarginterface.cxx \
 $${XDE_SRC}/clib/cos/cmainarg.cxx \
 $${XDE_SRC}/clib/cos/cargmain.cxx \
 
+########################################################################
 libcos_LIBS += \
+-L$${XDE_LIB}/libcos \
+-lcos \

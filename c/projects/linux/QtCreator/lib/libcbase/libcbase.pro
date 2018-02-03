@@ -32,9 +32,11 @@ $${libcbase_INCLUDEPATH} \
 DEFINES += \
 $${libcbase_DEFINES} \
 
+########################################################################
 HEADERS += \
 $${libcbase_HEADERS} \
 
 SOURCES += \
 $${libcbase_SOURCES} \
 
+########################################################################

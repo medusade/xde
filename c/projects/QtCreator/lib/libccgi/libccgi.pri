@@ -23,6 +23,7 @@ libccgi_INCLUDEPATH += \
 
 libccgi_DEFINES += \
 
+########################################################################
 libccgi_HEADERS += \
 $${XDE_SRC}/clib/ccgi/ccgiinterface.hxx \
 $${XDE_SRC}/clib/ccgi/ccgienv.hxx \
@@ -45,7 +46,10 @@ $${XDE_SRC}/clib/ccgi/cdocumenttemplatecgi.cxx \
 $${XDE_SRC}/clib/ccgi/ctemplatenamelist.cxx \
 $${XDE_SRC}/clib/ccgi/cdocumentnamelist.cxx \
 
+########################################################################
 libccgi_LIBS += \
+-L$${XDE_LIB}/libccgi \
+-lccgi \
 
 
 

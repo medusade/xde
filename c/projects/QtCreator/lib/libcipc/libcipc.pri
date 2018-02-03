@@ -23,6 +23,7 @@ libcipc_INCLUDEPATH += \
 
 libcipc_DEFINES += \
 
+########################################################################
 libcipc_HEADERS += \
 $${XDE_SRC}/clib/cos/cplatform/cplatform_ipc.h \
 $${XDE_SRC}/clib/cos/cplatform/cplatform_msg.h \
@@ -53,4 +54,5 @@ $${XDE_SRC}/clib/cos/csemaphore.cxx \
 $${XDE_SRC}/clib/cos/cthreadinterface.cxx \
 $${XDE_SRC}/clib/cos/cthread.cxx \
 
+########################################################################
 libcipc_LIBS += \
