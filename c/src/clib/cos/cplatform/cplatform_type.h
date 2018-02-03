@@ -44,9 +44,11 @@ typedef int MODE_T;
 
 typedef HANDLE INVALID_HANDLE_T;
 typedef HANDLE NULL_HANDLE_T;
+#define NULL_HANDLE_VALUE NULL
 
 typedef ATOM INVALID_ATOM_T;
 typedef ATOM NULL_ATOM_T;
+#define NULL_ATOM_VALUE 0
 
 typedef SSIZE_T ssize_t;
 typedef MODE_T mode_t;
@@ -107,10 +109,14 @@ typedef PVOID HINSTANCE;
 typedef INT HANDLE;
 typedef INT INVALID_HANDLE_T;
 typedef INT NULL_HANDLE_T;
+#define INVALID_HANDLE_VALUE -1
+#define NULL_HANDLE_VALUE 0
 
 typedef INT ATOM;
 typedef INT INVALID_ATOM_T;
 typedef INT NULL_ATOM_T;
+#define INVALID_ATOM_VALUE -1
+#define NULL_ATOM_VALUE 0
 
 typedef char* PCHAR;
 typedef PCHAR LPCHAR;
@@ -219,6 +225,28 @@ typedef LONG TLENGTH;
 typedef MODE_T MODET;
 typedef SIZE_T SIZET;
 typedef SSIZE_T SSIZET;
+
+#define NULL_BYTE 0
+#define NULL_CHAR 0
+#define NULL_TCHAR 0
+#define NULL_WCHAR 0
+
+#define NULL_POINTER_VALUE 0
+#define NULL_POINTER ((PVOID)(NULL_POINTER_VALUE))
+
+#if defined(NO_TEMPLATE_PARAMETER_CAST) 
+/* Can't cast template parameters
+ */
+#define V_UNDEFINED -1
+#define V_INVALID_HANDLE 0
+#define V_NULL_HANDLE 0
+#define V_NULL_ATOM 0
+#else /* defined(NO_TEMPLATE_PARAMETER_CAST) */
+#define V_UNDEFINED UNDEFINED
+#define V_INVALID_HANDLE INVALID_HANDLE
+#define V_NULL_HANDLE NULL_HANDLE
+#define V_NULL_ATOM NULL_ATOM
+#endif /* defined(NO_TEMPLATE_PARAMETER_CAST) */
 
 #if defined(__cplusplus)
 extern "C" {

@@ -38,8 +38,8 @@
  */
 template
 <class TAttached=HANDLE,
- class TUnAttached=HANDLE,
- TUnAttached VUnattached=INVALID_HANDLE,
+ class TUnAttached=INVALID_HANDLE_T,
+ TUnAttached VUnattached=V_INVALID_HANDLE,
  class TExtends=cAttached,
  class TImplements=cCreatedImplement>
  

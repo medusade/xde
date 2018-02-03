@@ -69,9 +69,6 @@
 
 #pragma warning(disable:4250) // derived 'class' inherits 'base::member' via dominance
 #pragma warning(disable:4355) // 'this' used in base member initializer list
-
-#define NULL_HANDLE_VALUE NULL
-#define NULL_ATOM_VALUE 0
 /*
  * Windows
  **/
@@ -85,6 +82,7 @@
 
 #define DF(name)
 #define NO_TEMPLATE_STATIC_MEMBERS
+#define NO_TEMPLATE_PARAMETER_CAST
 
 #define PLATFORM_EXPORT
 #define PLATFORM_IMPORT
@@ -118,42 +116,12 @@
 
 #define WINAPI
 #define INFINITE -1
-
-#define INVALID_HANDLE_VALUE -1
-#define NULL_HANDLE_VALUE 0
-
-#define INVALID_ATOM_VALUE -1
-#define NULL_ATOM_VALUE 0
 /*
  * Unix
  **/
 #endif /* defined(WIN32) */
 
-#define NULL_POINTER_VALUE ((void*)(0))
 #define UNDEFINED -1
-#define INVALID_HANDLE INVALID_HANDLE_VALUE
-#define NULL_HANDLE NULL_HANDLE_VALUE
-#define NULL_ATOM NULL_ATOM_VALUE
-#define NULL_POINTER NULL_POINTER_VALUE
-
-#if defined(NO_TEMPLATE_PARAMETER_CAST) 
-/* Can't cast template parameters
- */
-#define V_UNDEFINED -1
-#define V_INVALID_HANDLE 0
-#define V_NULL_HANDLE 0
-#define V_NULL_ATOM 0
-#else /* defined(NO_TEMPLATE_PARAMETER_CAST) */
-#define V_UNDEFINED UNDEFINED
-#define V_INVALID_HANDLE INVALID_HANDLE
-#define V_NULL_HANDLE NULL_HANDLE
-#define V_NULL_ATOM NULL_ATOM
-#endif /* defined(NO_TEMPLATE_PARAMETER_CAST) */
-
-#define NULL_BYTE 0
-#define NULL_CHAR 0
-#define NULL_TCHAR 0
-#define NULL_WCHAR 0
 
 #if defined(__cplusplus)
 extern "C" {

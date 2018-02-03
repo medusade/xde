@@ -3279,6 +3279,83 @@ public:
 
 /**
  **********************************************************************
+ *  Class: cReplaceStringTFunction
+ *
+ * Author: $author$
+ *   Date: 2/3/2018
+ **********************************************************************
+ */
+class cReplaceStringTFunction
+: public cTFunction
+{
+public:
+    typedef cTFunction cExtends;
+
+    /**
+     **********************************************************************
+     * Constructor: cReplaceStringTFunction
+     *
+     *      Author: $author$
+     *        Date: 2/3/2018
+     **********************************************************************
+     */
+    cReplaceStringTFunction(const char* name, const char* description)
+    : cExtends(name, description)
+    {
+        static cTFunctionParameter parameter[] = {
+            {"from", "find from"},
+            {"to", "replace with to"},
+            {"string,...", "in string(s)"},
+            {0,0}};
+        m_parameters = (sizeof(parameter)/sizeof(cTFunctionParameter))-1;
+        m_parameter = parameter;
+    }
+    /**
+     **********************************************************************
+     * Function: Expand
+     *
+     *   Author: $author$
+     *     Date: 2/3/2018
+     **********************************************************************
+     */
+    virtual eError Expand
+    (cCharStreamInterface &result, cTInterface &t, 
+     const cTFunctionArgumentList& arglist) const
+    {
+        cTFunctionArgument *from,*to,*arg;
+        const char *fromChars,*toChars,*chars;
+        TLENGTH foundLength,fromLength,toLength,length;
+
+        if ((from = arglist.GetFirstItem()))
+        if ((fromChars = from->GetBuffer(fromLength)))
+        if ((to = from->GetNextItem()))
+        if ((toChars = to->GetBuffer(toLength)))
+        if ((0 < fromLength) && (fromLength == toLength))
+        if ((arg = to->GetNextItem()))
+        {
+            const char* found = 0;
+            int i = 0;
+            do {
+                if ((chars = arg->GetBuffer(length)) && (0 < length)) {
+                    for (i = 0; i < length; ) {
+                        if ((found = strstr(chars+i, fromChars))) {
+                            result.Write(chars, foundLength = (found - chars));
+                            result.Write(toChars, toLength);
+                            i = foundLength + toLength;
+                        } else {
+                            result.Write(chars+i, length - i);
+                            break;
+                        }
+                    }
+                }
+            } while ((arg = arg->GetNextItem()));
+        }
+        return e_ERROR_NONE;
+    }
+} g_cReplaceStringTFunction("replace-string","replace-string(from,to,string,...)");
+
+/**
+ **********************************************************************
  *  Class: cGetenvTFunction
  *
  * Author: $author$

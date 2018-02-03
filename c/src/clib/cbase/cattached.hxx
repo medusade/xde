@@ -38,7 +38,7 @@
  */
 template
 <class TAttached=HANDLE,
- class TUnAttached=HANDLE,
+ class TUnAttached=INVALID_HANDLE_T,
  TUnAttached VUnattached=V_INVALID_HANDLE,
  class TImplements=cAttachedInterface,
  class TExtends=cBase>
@@ -164,7 +164,7 @@ public:
  **********************************************************************
  */
 typedef cAttachedT
-<HANDLE, HANDLE, V_INVALID_HANDLE,
+<HANDLE, INVALID_HANDLE_T, V_INVALID_HANDLE,
  cAttachedInterface, cBase>
 cAttached;
 
