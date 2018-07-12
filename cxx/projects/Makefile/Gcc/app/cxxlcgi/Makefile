@@ -74,7 +74,18 @@ cxxlcgi_EXE_CXX_SOURCES += \
 ${XDE_SRC}/capp/ccgi/cxxlcgi/ccxxlcgi.cxx \
 ${XDE_SRC}/capp/ccgi/cxxlcgi/ccxxlex.cxx \
 ${XDE_SRC}/capp/ccgi/cxxlcgi/ccxxlexer.cxx \
-${XDE_SRC}/clib/ccgi/cgi.cxx
+${XDE_SRC}/clib/ccgi/cgi.cxx \
+${XDE_SRC}/clib/ccgi/ctemplatenamelist.cxx \
+${XDE_SRC}/clib/ccgi/cdocumentnamelist.cxx \
+${XDE_SRC}/clib/ccgi/ctemplatefilenameitems.cxx \
+${XDE_SRC}/clib/ccgi/cdocumentfilenameitems.cxx \
+${XDE_SRC}/clib/cyy/clexercgilex.cxx \
+${XDE_SRC}/clib/cyy/clexersource.cxx \
+${XDE_SRC}/clib/cyy/clexertoken.cxx \
+${XDE_SRC}/clib/cyy/cyylexer.cxx \
+${XDE_SRC}/clib/ct/ctfunctions.cxx \
+${XDE_SRC}/clib/ct/ctfilefunctions.cxx \
+${XDE_SRC}/clib/ct/ctdatefunctions.cxx \
 
 #
 # Executable .cpp sources
