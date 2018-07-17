@@ -67,6 +67,12 @@ all-lxx: ${LIB_LXX_OBJS} ${SLIB_LXX_OBJS} ${EXE_LXX_OBJS}
 
 install: ${LIBINSTALL} ${SLIBINSTALL} ${EXEINSTALL}
 
+$(EXETARGET)-install: $(EXETARGET)
+	@(echo Installing $(EXETARGET)...;\
+	  ((mkdir -p $(HOME)/build/xde/bin) || (exit 1));\
+	  ((cp $(BINDIR)/$(EXETARGET) $(HOME)/build/xde/bin) || (exit 1));\
+	  echo ...Installed $(EXETARGET))
+
 ${SLIBINSTALL}: ${SLIBTARGET} 
 	@echo "      Installing Shared Lib - " ${SLIBTARGET}
 	@$(CP) $(LIBDIR)/${SLIBTARGET} $@

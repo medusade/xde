@@ -22,8 +22,7 @@
 #
 #############################################################################
 
-PKG = $(PWD)/../../../../..
-
+PKG = ../../../../..
 BLD = build/macosx
 PRJ = projects/macosx/gcc
 SRC = src
@@ -34,10 +33,14 @@ include $(PKG)/$(PRJ)/Makedefines
 # user includes
 #
 USRINCLUDES = \
--I$(PKG)/$(SRC)/cfs \
--I$(PKG)/$(SRC)/cyy \
--I$(PKG)/$(SRC)/ccgi \
--I$(PKG)/$(SRC)/cxttp
+-I$(PKG)/$(SRC)/clib/cfs \
+-I$(PKG)/$(SRC)/clib/cyy \
+-I$(PKG)/$(SRC)/clib/ccgi \
+-I$(PKG)/$(SRC)/clib/cxttp \
+-I$(PKG)/$(SRC)/clib/cos/cunix \
+-I$(PKG)/$(SRC)/clib/cos/cplatform \
+-I$(PKG)/$(SRC)/clib/cos \
+-I$(PKG)/$(SRC)/clib/cbase \
 
 #
 # targets
@@ -53,25 +56,27 @@ EXE_C_SOURCES = \
 # executable C++ .cxx sources
 #
 EXE_CXX_SOURCES = \
-$(PKG)/$(SRC)/capp/adacgi/cadalex.cxx \
-$(PKG)/$(SRC)/capp/adacgi/cadalexer.cxx \
-$(PKG)/$(SRC)/capp/adacgi/cadacgi.cxx \
-$(PKG)/$(SRC)/cyy/clexercgilex.cxx \
-$(PKG)/$(SRC)/cyy/clexersource.cxx \
-$(PKG)/$(SRC)/cyy/clexertoken.cxx \
-$(PKG)/$(SRC)/cyy/cyylexer.cxx \
-$(PKG)/$(SRC)/ccgi/ctemplatenamelist.cxx \
-$(PKG)/$(SRC)/ccgi/cdocumentnamelist.cxx \
-$(PKG)/$(SRC)/ccgi/ctemplatefilenameitems.cxx \
-$(PKG)/$(SRC)/ccgi/cdocumentfilenameitems.cxx \
-$(PKG)/$(SRC)/ccgi/cgi.cxx \
+$(PKG)/$(SRC)/capp/ccgi/adalcgi/cadalex.cxx \
+$(PKG)/$(SRC)/capp/ccgi/adalcgi/cadalexer.cxx \
+$(PKG)/$(SRC)/capp/ccgi/adalcgi/cadacgi.cxx \
+$(PKG)/$(SRC)/clib/ccgi/cgi.cxx \
+$(PKG)/$(SRC)/clib/ccgi/ctemplatenamelist.cxx \
+$(PKG)/$(SRC)/clib/ccgi/cdocumentnamelist.cxx \
+$(PKG)/$(SRC)/clib/ccgi/ctemplatefilenameitems.cxx \
+$(PKG)/$(SRC)/clib/ccgi/cdocumentfilenameitems.cxx \
+$(PKG)/$(SRC)/clib/cyy/clexercgilex.cxx \
+$(PKG)/$(SRC)/clib/cyy/clexersource.cxx \
+$(PKG)/$(SRC)/clib/cyy/clexertoken.cxx \
+$(PKG)/$(SRC)/clib/cyy/cyylexer.cxx \
 
 #
 # executable libs
 #
 LIBS = \
--lct \
 -lccgi \
+-lcxttp \
 -lcos \
+
+EXEINSTALL = $(EXETARGET)-install
 
 include $(PKG)/$(PRJ)/Makerules
