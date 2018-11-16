@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2017 $organization$
+# Copyright (c) 1988-2018 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -16,9 +16,9 @@
 #   File: Makedirs
 #
 # Author: $author$
-#   Date: 10/12/2017
+#   Date: 11/14/2018
 #
-# generic Gcc Makedirs for meta Makefile project
+# generic Gcc Makedirs
 ########################################################################
 
 all:
@@ -44,6 +44,8 @@ again:
 		echo "Make $$dir again" ; \
 		(cd $$dir && make again) || (echo "Make $$dir again Failed") ; \
 	done
+	
+########################################################################
 
 help:
 	@for dir in $(SRC_DIRS); do \
@@ -69,6 +71,12 @@ config:
 		(cd $$dir && make config) || (echo "Make $$dir config Failed") ; \
 	done
 
+unconfig:
+	@for dir in $(SRC_DIRS); do \
+		echo "Make $$dir unconfig" ; \
+		(cd $$dir && make unconfig) || (echo "Make $$dir unconfig Failed") ; \
+	done
+
 extract:
 	@for dir in $(SRC_DIRS); do \
 		echo "Make $$dir extract" ; \
@@ -80,4 +88,17 @@ unextract:
 		echo "Make $$dir unextract" ; \
 		(cd $$dir && make unextract) || (echo "Make $$dir unextract Failed") ; \
 	done
+
+extract-patch:
+	@for dir in $(SRC_DIRS); do \
+		echo "Make $$dir extract-patch" ; \
+		(cd $$dir && make extract-patch) || (echo "Make $$dir extract-patch Failed") ; \
+	done
+
+extract-docs:
+	@for dir in $(SRC_DIRS); do \
+		echo "Make $$dir extract-docs" ; \
+		(cd $$dir && make extract-docs) || (echo "Make $$dir extract-docs Failed") ; \
+	done
+
 

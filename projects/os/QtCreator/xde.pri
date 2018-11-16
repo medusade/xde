@@ -13,36 +13,75 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: Makefile
+#   File: xde.pri
 #
 # Author: $author$
-#   Date: 11/14/2018
+#   Date: 11/13/2018
 #
-# Os Gcc Makefile for xde subdurs
+# Os QtCreator .pri file for xde
 ########################################################################
+UNAME = $$system(uname)
 
-PKG = ../../../..
+#CONFIG += c++11
+#CONFIG += c++0x
 
-MAK = projects/Makefile/Gcc
-PRJ = projects/os/Makefile/Gcc
-SRC = src
+########################################################################
+# medusaxde
 
-include $(PKG)/$(MAK)/Makedefines
+contains(UNAME,Darwin) {
+MEDUSAXDE_OS = macosx
+} else {
+MEDUSAXDE_OS = linux
+}
 
+# medusaxde INCLUDEPATH
 #
-# Source subdirs
-#
-#SRC_DIRS = \
-#$(PKG)/$(PRJ)/somedir \
-#
-SRC_DIRS = \
-$(PKG)/$(PRJ)/lib/libxde \
-$(PKG)/$(PRJ)/lib/libmedusaxde \
-$(PKG)/$(PRJ)/app/t \
-$(PKG)/$(PRJ)/app/tcgi \
-$(PKG)/$(PRJ)/app/cxxlcgi \
-$(PKG)/$(PRJ)/app/xslcgi \
-$(PKG)/$(PRJ)/app/cgi \
-$(PKG)/$(PRJ)/app/cgicatch \
+medusaxde_INCLUDEPATH += \
 
-include $(PKG)/$(MAK)/Makedirs
+# medusaxde DEFINES
+#
+medusaxde_DEFINES += \
+
+# medusaxde LIBS
+#
+medusaxde_LIBS += \
+$${build_medusaxde_LIBS} \
+-lpthread \
+-ldl \
+
+contains(MEDUSAXDE_OS,linux) {
+medusaxde_LIBS += \
+-lrt
+} else {
+}
+
+########################################################################
+# xde
+
+contains(UNAME,Darwin) {
+XDE_OS = macosx
+} else {
+XDE_OS = linux
+}
+
+# xde INCLUDEPATH
+#
+xde_INCLUDEPATH += \
+
+# xde DEFINES
+#
+xde_DEFINES += \
+
+# xde LIBS
+#
+xde_LIBS += \
+$${build_xde_LIBS} \
+-lpthread \
+-ldl \
+
+contains(XDE_OS,linux) {
+xde_LIBS += \
+-lrt
+} else {
+}
+

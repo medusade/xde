@@ -13,36 +13,47 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: Makefile
+#   File: Makedefines
 #
 # Author: $author$
 #   Date: 11/14/2018
 #
-# Os Gcc Makefile for xde subdurs
+# build Gcc Makedefines for xde
 ########################################################################
 
-PKG = ../../../..
-
-MAK = projects/Makefile/Gcc
-PRJ = projects/os/Makefile/Gcc
-SRC = src
-
-include $(PKG)/$(MAK)/Makedefines
+#
+# build HOME
+#
+ifndef BUILD_HOME
+ifdef PKG
+BUILD_HOME = $(PKG)/../..
+else
+BUILD_HOME = $(HOME)
+endif
+endif
 
 #
-# Source subdirs
+# build UNAME
 #
-#SRC_DIRS = \
-#$(PKG)/$(PRJ)/somedir \
-#
-SRC_DIRS = \
-$(PKG)/$(PRJ)/lib/libxde \
-$(PKG)/$(PRJ)/lib/libmedusaxde \
-$(PKG)/$(PRJ)/app/t \
-$(PKG)/$(PRJ)/app/tcgi \
-$(PKG)/$(PRJ)/app/cxxlcgi \
-$(PKG)/$(PRJ)/app/xslcgi \
-$(PKG)/$(PRJ)/app/cgi \
-$(PKG)/$(PRJ)/app/cgicatch \
+ifndef UNAME
+UNAME = $(shell uname)
+endif
 
-include $(PKG)/$(MAK)/Makedirs
+#
+# build OS
+#
+ifndef OS
+ifneq ($(UNAME),Darwin)
+OS = linux
+else
+OS = macosx
+endif
+endif
+
+#
+# install directory
+#
+ifndef INS
+INS = $(BUILD_HOME)/build/xde
+endif
+

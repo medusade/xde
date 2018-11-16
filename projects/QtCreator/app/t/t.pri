@@ -13,36 +13,65 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: Makefile
+#   File: t.pri
 #
 # Author: $author$
 #   Date: 11/14/2018
 #
-# Os Gcc Makefile for xde subdurs
+# QtCreator .pri file for xde executable t
 ########################################################################
 
-PKG = ../../../..
+########################################################################
+# t
 
-MAK = projects/Makefile/Gcc
-PRJ = projects/os/Makefile/Gcc
-SRC = src
-
-include $(PKG)/$(MAK)/Makedefines
-
+# t TARGET
 #
-# Source subdirs
-#
-#SRC_DIRS = \
-#$(PKG)/$(PRJ)/somedir \
-#
-SRC_DIRS = \
-$(PKG)/$(PRJ)/lib/libxde \
-$(PKG)/$(PRJ)/lib/libmedusaxde \
-$(PKG)/$(PRJ)/app/t \
-$(PKG)/$(PRJ)/app/tcgi \
-$(PKG)/$(PRJ)/app/cxxlcgi \
-$(PKG)/$(PRJ)/app/xslcgi \
-$(PKG)/$(PRJ)/app/cgi \
-$(PKG)/$(PRJ)/app/cgicatch \
+t_TARGET = t
 
-include $(PKG)/$(MAK)/Makedirs
+# t INCLUDEPATH
+#
+t_INCLUDEPATH += \
+$${xde_INCLUDEPATH} \
+
+# t DEFINES
+#
+t_DEFINES += \
+$${xde_DEFINES} \
+
+########################################################################
+# t OBJECTIVE_HEADERS
+#
+#t_OBJECTIVE_HEADERS += \
+#$${XDE_SRC}/xde/base/Base.hh \
+
+# t OBJECTIVE_SOURCES
+#
+#t_OBJECTIVE_SOURCES += \
+#$${XDE_SRC}/xde/base/Base.mm \
+
+########################################################################
+# t HEADERS
+#
+t_HEADERS += \
+$${XDE_SRC}/clib/ct/ctmain.hxx \
+$${XDE_SRC}/clib/cos/argmain.hxx \
+
+# t SOURCES
+#
+t_SOURCES += \
+$${XDE_SRC}/clib/ct/ctmain.cxx \
+$${XDE_SRC}/clib/cos/argmain.cxx \
+$${xde_t_function_SOURCES} \
+
+########################################################################
+# t FRAMEWORKS
+#
+t_FRAMEWORKS += \
+$${xde_FRAMEWORKS} \
+
+# t LIBS
+#
+t_LIBS += \
+$${xde_LIBS} \
+
+

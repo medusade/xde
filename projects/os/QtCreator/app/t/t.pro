@@ -13,36 +13,62 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: Makefile
+#   File: t.pro
 #
 # Author: $author$
 #   Date: 11/14/2018
 #
-# Os Gcc Makefile for xde subdurs
+# QtCreator .pro file for xde executable t
 ########################################################################
+include(../../../../../build/QtCreator/xde.pri)
+include(../../../../QtCreator/xde.pri)
+include(../../xde.pri)
+include(../../../../QtCreator/app/t/t.pri)
 
-PKG = ../../../..
+TARGET = $${t_TARGET}
 
-MAK = projects/Makefile/Gcc
-PRJ = projects/os/Makefile/Gcc
-SRC = src
-
-include $(PKG)/$(MAK)/Makedefines
-
+########################################################################
+# INCLUDEPATH
 #
-# Source subdirs
-#
-#SRC_DIRS = \
-#$(PKG)/$(PRJ)/somedir \
-#
-SRC_DIRS = \
-$(PKG)/$(PRJ)/lib/libxde \
-$(PKG)/$(PRJ)/lib/libmedusaxde \
-$(PKG)/$(PRJ)/app/t \
-$(PKG)/$(PRJ)/app/tcgi \
-$(PKG)/$(PRJ)/app/cxxlcgi \
-$(PKG)/$(PRJ)/app/xslcgi \
-$(PKG)/$(PRJ)/app/cgi \
-$(PKG)/$(PRJ)/app/cgicatch \
+INCLUDEPATH += \
+$${t_INCLUDEPATH} \
 
-include $(PKG)/$(MAK)/Makedirs
+# DEFINES
+# 
+DEFINES += \
+$${t_DEFINES} \
+
+########################################################################
+# OBJECTIVE_HEADERS
+#
+OBJECTIVE_HEADERS += \
+$${t_OBJECTIVE_HEADERS} \
+
+# OBJECTIVE_SOURCES
+#
+OBJECTIVE_SOURCES += \
+$${t_OBJECTIVE_SOURCES} \
+
+########################################################################
+# HEADERS
+#
+HEADERS += \
+$${t_HEADERS} \
+$${OBJECTIVE_HEADERS} \
+
+# SOURCES
+#
+SOURCES += \
+$${t_SOURCES} \
+
+########################################################################
+# FRAMEWORKS
+#
+FRAMEWORKS += \
+$${t_FRAMEWORKS} \
+
+# LIBS
+#
+LIBS += \
+$${t_LIBS} \
+$${FRAMEWORKS} \
