@@ -52,6 +52,14 @@
 #define WIN32_MSC_VER_6
 #endif /* (_MSC_VER >= MSC_VER_8) */
 
+#define PLATFORM_EXPORT __declspec(dllexport)
+#define PLATFORM_IMPORT __declspec(dllimport)
+
+#define PLATFORM_CCAST(type) const_cast<type>
+#define PLATFORM_DCAST(type) dynamic_cast<type>
+#define PLATFORM_SCAST(type) static_cast<type>
+#define PLATFORM_RCAST(type) reinterpret_cast<type>
+
 #if defined(WIN32_MSC_VER_6) 
 /* Visual C++ 6.0 */
 #pragma warning(disable:4786) /* identifier was truncated to '255'

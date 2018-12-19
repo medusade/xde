@@ -233,6 +233,7 @@ typedef SSIZE_T SSIZET;
 
 #define NULL_POINTER_VALUE 0
 #define NULL_POINTER ((PVOID)(NULL_POINTER_VALUE))
+#define INVALID_HANDLE ((HANDLE)INVALID_HANDLE_VALUE)
 
 #if defined(NO_TEMPLATE_PARAMETER_CAST) 
 /* Can't cast template parameters

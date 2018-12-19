@@ -285,7 +285,7 @@ public:
                      B_, "...failed on m_xslTransformer-", GT, "Finalize()", _B, BR, NULL_POINTER);
                 }
             }
-            cXSLTransformerInterface::DestroyInstance(m_xslTransformer);
+            cXSLTransformerInterface::DestroyInstance(*m_xslTransformer);
         }
         return err;
     }
