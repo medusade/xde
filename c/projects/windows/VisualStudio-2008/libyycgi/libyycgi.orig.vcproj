@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="t"
-	ProjectGUID="{F29CF89B-CBDE-4F73-B655-A6588A89D8A1}"
-	RootNamespace="t"
+	Name="libyycgi"
+	ProjectGUID="{306AC100-2C30-4882-9C41-61191ED9B385}"
+	RootNamespace="libyycgi"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="131072"
 	>
@@ -18,9 +18,9 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(XDE_BIN)"
+			OutputDirectory="$(XDE_LIB)"
 			IntermediateDirectory="$(XDE_OBJ)"
-			ConfigurationType="1"
+			ConfigurationType="4"
 			InheritedPropertySheets="..\xde-vcversion.vsprops;..\..\xde.vsprops"
 			CharacterSet="1"
 			>
@@ -43,7 +43,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="$(XDE_INCLUDES)"
-				PreprocessorDefinitions="DEFAULT_MAIN_DEBUG_LEVELS=1"
+				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -62,19 +62,10 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLinkerTool"
-				LinkIncremental="2"
-				GenerateDebugInformation="true"
-				SubSystem="1"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
-				TargetMachine="1"
+				Name="VCLibrarianTool"
 			/>
 			<Tool
 				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -84,9 +75,6 @@
 			/>
 			<Tool
 				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -94,9 +82,9 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(XDE_BIN)"
+			OutputDirectory="$(XDE_LIB)"
 			IntermediateDirectory="$(XDE_OBJ)"
-			ConfigurationType="1"
+			ConfigurationType="4"
 			InheritedPropertySheets="..\xde-vcversion.vsprops;..\..\xde.vsprops"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
@@ -119,7 +107,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="$(XDE_INCLUDES)"
-				PreprocessorDefinitions="DEFAULT_MAIN_DEBUG_LEVELS=1"
+				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -136,21 +124,10 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLinkerTool"
-				LinkIncremental="1"
-				GenerateDebugInformation="true"
-				SubSystem="1"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
-				TargetMachine="1"
+				Name="VCLibrarianTool"
 			/>
 			<Tool
 				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -160,85 +137,6 @@
 			/>
 			<Tool
 				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-		</Configuration>
-		<Configuration
-			Name="TestRelease|Win32"
-			OutputDirectory="$(XDE_BIN)"
-			IntermediateDirectory="$(XDE_OBJ)"
-			ConfigurationType="1"
-			InheritedPropertySheets="..\xde-vcversion.vsprops;..\..\xde.vsprops"
-			CharacterSet="1"
-			WholeProgramOptimization="1"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="$(XDE_INCLUDES)"
-				PreprocessorDefinitions="DEFAULT_MAIN_DEBUG_LEVELS=1"
-				RuntimeLibrary="2"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				Detect64BitPortabilityProblems="true"
-				DebugInformationFormat="3"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				LinkIncremental="1"
-				GenerateDebugInformation="true"
-				SubSystem="1"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
-				TargetMachine="1"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -246,9 +144,9 @@
 		</Configuration>
 		<Configuration
 			Name="TestDebug|Win32"
-			OutputDirectory="$(XDE_BIN)"
+			OutputDirectory="$(XDE_LIB)"
 			IntermediateDirectory="$(XDE_OBJ)"
-			ConfigurationType="1"
+			ConfigurationType="4"
 			InheritedPropertySheets="..\xde-vcversion.vsprops;..\..\xde.vsprops"
 			CharacterSet="1"
 			>
@@ -271,7 +169,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="$(XDE_INCLUDES)"
-				PreprocessorDefinitions="DEFAULT_MAIN_DEBUG_LEVELS=1"
+				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -290,19 +188,10 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLinkerTool"
-				LinkIncremental="2"
-				GenerateDebugInformation="true"
-				SubSystem="1"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
-				TargetMachine="1"
+				Name="VCLibrarianTool"
 			/>
 			<Tool
 				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -314,7 +203,66 @@
 				Name="VCFxCopTool"
 			/>
 			<Tool
-				Name="VCAppVerifierTool"
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="TestRelease|Win32"
+			OutputDirectory="$(XDE_LIB)"
+			IntermediateDirectory="$(XDE_OBJ)"
+			ConfigurationType="4"
+			InheritedPropertySheets="..\xde-vcversion.vsprops;..\..\xde.vsprops"
+			CharacterSet="1"
+			WholeProgramOptimization="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="$(XDE_INCLUDES)"
+				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
+				RuntimeLibrary="2"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="true"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -330,27 +278,59 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\..\..\..\src\clib\cos\argmain.cxx"
+				RelativePath="..\..\..\..\src\clib\cyy\clexercgi.cxx"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\src\clib\ct\ctconditionalfunctions.cxx"
+				RelativePath="..\..\..\..\src\clib\cyy\clexercgilex.cxx"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\src\clib\ct\ctdatefunctions.cxx"
+				RelativePath="..\..\..\..\src\clib\cyy\clexercgilex.l"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(XDE_BIN)\bflex -+vLI -S$(XDE_SRC)\clib\cyy\yylexer.skl -o$(InputDir)$(InputName).cxx $(InputDir)$(InputName).l&#x0D;&#x0A;"
+						Outputs="$(InputDir)$(InputName).cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(XDE_BIN)\bflex -+vLI -S$(XDE_SRC)\clib\cyy\yylexer.skl -o$(InputDir)$(InputName).cxx $(InputDir)$(InputName).l&#x0D;&#x0A;"
+						Outputs="$(InputDir)$(InputName).cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="TestDebug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(XDE_BIN)\bflex -+vLI -S$(XDE_SRC)\clib\cyy\yylexer.skl -o$(InputDir)$(InputName).cxx $(InputDir)$(InputName).l&#x0D;&#x0A;"
+						Outputs="$(InputDir)$(InputName).cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="TestRelease|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(XDE_BIN)\bflex -+vLI -S$(XDE_SRC)\clib\cyy\yylexer.skl -o$(InputDir)$(InputName).cxx $(InputDir)$(InputName).l&#x0D;&#x0A;"
+						Outputs="$(InputDir)$(InputName).cxx"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\..\src\clib\cyy\clexercgilexer.cxx"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\src\clib\ct\ctfilefunctions.cxx"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\..\src\clib\ct\ctfunctions.cxx"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\..\src\clib\ct\ctmain.cxx"
+				RelativePath="..\..\..\..\src\clib\cyy\clexertcgi.cxx"
 				>
 			</File>
 		</Filter>
@@ -365,6 +345,18 @@
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
+		</Filter>
+		<Filter
+			Name="Make Files"
+			>
+			<Filter
+				Name="linux"
+				>
+				<Filter
+					Name="gcc"
+					>
+				</Filter>
+			</Filter>
 		</Filter>
 	</Files>
 	<Globals>

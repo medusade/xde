@@ -286,46 +286,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\src\clib\cyy\clexercgilex.l"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						CommandLine="$(XDE_BIN)\bflex -+vLI -S$(XDE_SRC)\clib\cyy\yylexer.skl -o$(InputDir)$(InputName).cxx $(InputDir)$(InputName).l&#x0D;&#x0A;"
-						Outputs="$(InputDir)$(InputName).cxx"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						CommandLine="$(XDE_BIN)\bflex -+vLI -S$(XDE_SRC)\clib\cyy\yylexer.skl -o$(InputDir)$(InputName).cxx $(InputDir)$(InputName).l&#x0D;&#x0A;"
-						Outputs="$(InputDir)$(InputName).cxx"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="TestDebug|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						CommandLine="$(XDE_BIN)\bflex -+vLI -S$(XDE_SRC)\clib\cyy\yylexer.skl -o$(InputDir)$(InputName).cxx $(InputDir)$(InputName).l&#x0D;&#x0A;"
-						Outputs="$(InputDir)$(InputName).cxx"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="TestRelease|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						CommandLine="$(XDE_BIN)\bflex -+vLI -S$(XDE_SRC)\clib\cyy\yylexer.skl -o$(InputDir)$(InputName).cxx $(InputDir)$(InputName).l&#x0D;&#x0A;"
-						Outputs="$(InputDir)$(InputName).cxx"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath="..\..\..\..\src\clib\cyy\clexercgilexer.cxx"
 				>
 			</File>
