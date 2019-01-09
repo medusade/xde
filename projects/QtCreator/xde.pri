@@ -125,6 +125,8 @@ $${xde_INCLUDEPATH} \
 $${MEDUSAXDE_SRC}/clib/clibc/clibxml2/clibxslt \
 $${MEDUSAXDE_SRC}/clib/cxml/cxslt \
 $${MEDUSAXDE_SRC}/clib/cxml \
+$${MEDUSAXDE_SRC}/clib/cxttp/chttp/ccgi \
+$${MEDUSAXDE_SRC}/clib/cxttp/chttp \
 $${MEDUSAXDE_SRC}/clib/cxttp \
 $${MEDUSAXDE_SRC}/clib/cos \
 $${MEDUSAXDE_SRC}/clib/cbase \

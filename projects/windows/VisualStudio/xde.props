@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<!--========================================================================-->
+<!-- Copyright (c) 1988-2019 $organization$                                 -->
+<!--                                                                        -->
+<!-- This software is provided by the author and contributors ``as is''     -->
+<!-- and any express or implied warranties, including, but not limited to,  -->
+<!-- the implied warranties of merchantability and fitness for a particular -->
+<!-- purpose are disclaimed. In no event shall the author or contributors   -->
+<!-- be liable for any direct, indirect, incidental, special, exemplary,    -->
+<!-- or consequential damages (including, but not limited to, procurement   -->
+<!-- of substitute goods or services; loss of use, data, or profits; or     -->
+<!-- business interruption) however caused and on any theory of liability,  -->
+<!-- whether in contract, strict liability, or tort (including negligence   -->
+<!-- or otherwise) arising in any way out of the use of this software,      -->
+<!-- even if advised of the possibility of such damage.                     -->
+<!--                                                                        -->
+<!--   File: xde.props                                                      -->
+<!--                                                                        -->
+<!-- Author: $author$                                                       -->
+<!--   Date: 1/9/2019                                                       -->
+<!--========================================================================-->
+<Project
+  ToolsVersion="4.0"
+  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!--===============================================-->
+
+  <PropertyGroup Label="UserMacros">
+      <XDE_GROUP></XDE_GROUP>
+      <XDE_NAME>xde</XDE_NAME>
+      <XDE_VERSION></XDE_VERSION>
+
+      <XDE_DIR>$(XDE_GROUP)$(XDE_NAME)$(XDE_VERSION)</XDE_DIR>
+      <XDE_SOURCE_DIR>$(SOURCE_ROOT_DIR)/$(XDE_DIR)/src</XDE_SOURCE_DIR>
+      <XDE_BUILD_DIR>$(SOURCE_BUILD_DIR)/$(XDE_DIR)/build</XDE_BUILD_DIR>
+      <XDE_BUILD>$(XDE_BUILD_DIR)/$(PlatformName)/$(VCVersion)/$(Configuration)</XDE_BUILD>
+      <XDE_OBJ>$(XDE_BUILD)/obj/$(ProjectName)</XDE_OBJ>
+      <XDE_LIB>$(XDE_BUILD)/lib</XDE_LIB>
+      <XDE_BIN>$(XDE_BUILD)/bin</XDE_BIN>
+
+      <XDE_DEFINES></XDE_DEFINES>
+      <XDE_DEBUG_DEFINES>$(XDE_DEFINES);$(DEPENDS_DEBUG_DEFINES)</XDE_DEBUG_DEFINES>
+      <XDE_RELEASE_DEFINES>$(XDE_DEFINES);$(DEPENDS_RELEASE_DEFINES)</XDE_RELEASE_DEFINES>
+      <XDE_INCLUDE_DIRS>$(XDE_SOURCE_DIR)</XDE_INCLUDE_DIRS>
+      <VC10_XDE_INCLUDE_DIRS>$(XDE_INCLUDE_DIRS);$(VC10_DEPENDS_INCLUDE_DIRS)</VC10_XDE_INCLUDE_DIRS>
+      <VC14_XDE_INCLUDE_DIRS>$(XDE_INCLUDE_DIRS);$(VC14_DEPENDS_INCLUDE_DIRS)</VC14_XDE_INCLUDE_DIRS>
+      <XDE_LIB_DIRS>$(XDE_LIB);$(DEPENDS_LIB_DIRS)</XDE_LIB_DIRS>
+      <XDE_LIBS>libxde.lib;$(DEPENDS_LIBS)</XDE_LIBS>
+  </PropertyGroup>
+
+  <!--===============================================-->
+
+  <ItemGroup>
+      <BuildMacro Include="XDE_GROUP">
+          <Value>$(XDE_GROUP)</Value>
+      </BuildMacro>
+      <BuildMacro Include="XDE_NAME">
+          <Value>$(XDE_NAME)</Value>
+      </BuildMacro>
+      <BuildMacro Include="XDE_VERSION">
+          <Value>$(XDE_VERSION)</Value>
+      </BuildMacro>
+      
+      <BuildMacro Include="XDE_DIR">
+          <Value>$(XDE_DIR)</Value>
+      </BuildMacro>
+      <BuildMacro Include="XDE_SOURCE_DIR">
+          <Value>$(XDE_SOURCE_DIR)</Value>
+      </BuildMacro>
+      <BuildMacro Include="XDE_BUILD_DIR">
+          <Value>$(XDE_BUILD_DIR)</Value>
+      </BuildMacro>
+      <BuildMacro Include="XDE_BUILD">
+          <Value>$(XDE_BUILD)</Value>
+      </BuildMacro>
+      <BuildMacro Include="XDE_OBJ">
+          <Value>$(XDE_OBJ)</Value>
+      </BuildMacro>
+      <BuildMacro Include="XDE_LIB">
+          <Value>$(XDE_LIB)</Value>
+      </BuildMacro>
+      <BuildMacro Include="XDE_BIN">
+          <Value>$(XDE_BIN)</Value>
+      </BuildMacro>
+      
+      <BuildMacro Include="XDE_DEFINES">
+          <Value>$(XDE_DEFINES)</Value>
+      </BuildMacro>
+      <BuildMacro Include="XDE_DEBUG_DEFINES">
+          <Value>$(XDE_DEBUG_DEFINES)</Value>
+      </BuildMacro>
+      <BuildMacro Include="XDE_RELEASE_DEFINES">
+          <Value>$(XDE_RELEASE_DEFINES)</Value>
+      </BuildMacro>
+      <BuildMacro Include="XDE_INCLUDE_DIRS">
+          <Value>$(XDE_INCLUDE_DIRS)</Value>
+      </BuildMacro>
+      <BuildMacro Include="VC10_XDE_INCLUDE_DIRS">
+          <Value>$(VC10_XDE_INCLUDE_DIRS)</Value>
+      </BuildMacro>
+      <BuildMacro Include="VC14_XDE_INCLUDE_DIRS">
+          <Value>$(VC14_XDE_INCLUDE_DIRS)</Value>
+      </BuildMacro>
+      <BuildMacro Include="XDE_LIB_DIRS">
+          <Value>$(XDE_LIB_DIRS)</Value>
+      </BuildMacro>
+      <BuildMacro Include="XDE_LIBS">
+          <Value>$(XDE_LIBS)</Value>
+      </BuildMacro>
+  </ItemGroup>
+
+  <!--===============================================-->
+
+</Project>
