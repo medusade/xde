@@ -26,10 +26,12 @@
 #include <stdarg.h>
 int CDEBUG_PRINTF(const char* format, ...) {
     int count = 0;
+#if !defined(RELEASE_BUILD)
     va_list va;
     va_start(va, format);
     count = vprintf(format, va);
     va_end(va);
+#endif /* !defined(RELEASE_BUILD) */
     return count;
 }
 #else /* defined(CDEBUG_PRINTF) */
