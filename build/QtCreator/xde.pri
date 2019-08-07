@@ -28,6 +28,9 @@ HOME = /Users/jboyd
 HOME = /home/jboyd
 }
 
+thirdparty_HOME = ../../../../../thirdparty
+thirdparty_build_HOME = ../$${thirdparty_HOME}
+
 ########################################################################
 # libxml2
 #
@@ -37,7 +40,7 @@ HOME = /home/jboyd
 # build libxml2 INCLUDEPATH
 #
 build_libxml2_INCLUDEPATH += \
-$${HOME}/build/libxml2/include/libxml2 \
+$${thirdparty_HOME}/build/libxml2/include/libxml2 \
 
 # build libxml2 DEFINES
 #
@@ -46,7 +49,7 @@ build_libxml2_DEFINES += \
 # build libxml2 LIBS
 #
 build_libxml2_LIBS += \
--L$${HOME}/build/libxml2/lib \
+-L$${thirdparty_build_HOME}/build/libxml2/lib \
 -lxml2 \
 
 ########################################################################
@@ -58,7 +61,7 @@ build_libxml2_LIBS += \
 # build libxslt INCLUDEPATH
 #
 build_libxslt_INCLUDEPATH += \
-$${HOME}/build/libxslt/include \
+$${thirdparty_HOME}/build/libxslt/include \
 $${build_libxml2_INCLUDEPATH} \
 
 # build libxslt DEFINES
@@ -68,7 +71,7 @@ build_libxslt_DEFINES += \
 # build libxslt LIBS
 #
 build_libxslt_LIBS += \
--L$${HOME}/build/libxslt/lib \
+-L$${thirdparty_build_HOME}/build/libxslt/lib \
 -lxslt \
 -lexslt \
 $${build_libxml2_LIBS} \

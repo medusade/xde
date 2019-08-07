@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2017 $organization$
+# Copyright (c) 1988-2019 $organization$
 #
 # This software is provided by the author and contributors ``as is'' 
 # and any express or implied warranties, including, but not limited to, 
@@ -16,7 +16,7 @@
 #   File: Makefile
 #
 # Author: $author$
-#   Date: 12/18/2017
+#   Date: 8/6/2019
 #
 # Thirdpary Makefile for libxml2
 ########################################################################
@@ -76,10 +76,14 @@ LIBXML2_COMPRESSED_SEPARATOR = $(LIBXML2_ARCHIVE_SEPARATOR)
 LIBXML2_EXTRACT_DIR = $(LIBXML2_NAME)
 LIBXML2_TGZ_PREFIX = 
 LIBXML2_TGZ = $(LIBXML2_NAME)$(LIBXML2_TGZ_PREFIX)$(LIBXML2_ARCHIVED_SEPARATOR)$(LIBXML2_ARCHIVED)$(LIBXML2_COMPRESSED_SEPARATOR)$(LIBXML2_COMPRESSED)
-LIBXML2_PATCH_TGZ_PREFIX = $(LIBXML2_NAME_SEPARATOR)patch
+LIBXML2_PATCH_TGZ_PREFIX = $(LIBXML2_NAME_SEPARATOR)xde-windows-patch
 LIBXML2_PATCH_TGZ = $(LIBXML2_NAME)$(LIBXML2_PATCH_TGZ_PREFIX)$(LIBXML2_ARCHIVED_SEPARATOR)$(LIBXML2_ARCHIVED)$(LIBXML2_COMPRESSED_SEPARATOR)$(LIBXML2_COMPRESSED)
+LIBXML2_PATCHED_TGZ_PREFIX = $(LIBXML2_PATCH_TGZ_PREFIX)ed
+LIBXML2_PATCHED_TGZ = $(LIBXML2_NAME)$(LIBXML2_PATCHED_TGZ_PREFIX)$(LIBXML2_ARCHIVED_SEPARATOR)$(LIBXML2_ARCHIVED)$(LIBXML2_COMPRESSED_SEPARATOR)$(LIBXML2_COMPRESSED)
 LIBXML2_DOCS_TGZ_PREFIX = $(LIBXML2_NAME_SEPARATOR)docs
 LIBXML2_DOCS_TGZ = $(LIBXML2_NAME)$(LIBXML2_DOCS_TGZ_PREFIX)$(LIBXML2_ARCHIVED_SEPARATOR)$(LIBXML2_ARCHIVED)$(LIBXML2_COMPRESSED_SEPARATOR)$(LIBXML2_COMPRESSED)
+LIBXML2_BUILD_TGZ_PREFIX = $(LIBXML2_NAME_SEPARATOR)build
+LIBXML2_BUILD_TGZ = $(LIBXML2_NAME)$(LIBXML2_BUILD_TGZ_PREFIX)$(LIBXML2_ARCHIVED_SEPARATOR)$(LIBXML2_ARCHIVED)$(LIBXML2_COMPRESSED_SEPARATOR)$(LIBXML2_COMPRESSED)
 
 #
 # libxml2 extract
@@ -125,15 +129,25 @@ LIBXML2_EXTRACT_PATCH = $(LIBXML2_EXTRACT)
 LIBXML2_LIST_PATCH_TGZ = $(LIBXML2_LIST_PATCH) $(LIBXML2_PATCH_TGZ)
 LIBXML2_EXTRACT_PATCH_TGZ = $(LIBXML2_EXTRACT_PATCH) $(LIBXML2_PATCH_TGZ)
 
+LIBXML2_LIST_PATCHED = $(LIBXML2_LIST)
+LIBXML2_EXTRACT_PATCHED = $(LIBXML2_EXTRACT)
+LIBXML2_LIST_PATCHED_TGZ = $(LIBXML2_LIST_PATCHED) $(LIBXML2_PATCHED_TGZ)
+LIBXML2_EXTRACT_PATCHED_TGZ = $(LIBXML2_EXTRACT_PATCHED) $(LIBXML2_PATCHED_TGZ)
+
 LIBXML2_LIST_DOCS = $(LIBXML2_LIST)
 LIBXML2_EXTRACT_DOCS = $(LIBXML2_EXTRACT)
 LIBXML2_LIST_DOCS_TGZ = $(LIBXML2_LIST_DOCS) $(LIBXML2_DOCS_TGZ)
 LIBXML2_EXTRACT_DOCS_TGZ = $(LIBXML2_EXTRACT_DOCS) $(LIBXML2_DOCS_TGZ) -C$(LIBXML2_DOCS_PREFIX)
 
+LIBXML2_LIST_BUILD = $(LIBXML2_LIST)
+LIBXML2_EXTRACT_BUILD = $(LIBXML2_EXTRACT)
+LIBXML2_LIST_BUILD_TGZ = $(LIBXML2_LIST_BUILD) $(LIBXML2_BUILD_TGZ)
+LIBXML2_EXTRACT_BUILD_TGZ = $(LIBXML2_EXTRACT_BUILD) $(LIBXML2_BUILD_TGZ)
+
 #
 # libxml2 build
 #
-LIBXML2_BUILD = $(HOME)/build
+LIBXML2_BUILD = $(LIBXML2_MAKEDIR)/build
 LIBXML2_PREFIX = $(LIBXML2_BUILD)/$(LIBXML2_INSTALL_NAME)
 LIBXML2_EXEC_PREFIX = $(LIBXML2_PREFIX)
 LIBXML2_CONF_PREFIX = $(LIBXML2_PREFIX)
@@ -196,10 +210,36 @@ help: help-libxml2
 
 list-docs: list-libxml2-docs
 
+########################################################################
 list-patch: list-libxml2-patch
 
 extract-patch: extract-libxml2-patch
 
+patch-extracted: libxml2-patch-extracted
+
+########################################################################
+list-patched: list-libxml2-patched
+
+extract-patched: extract-libxml2-patched
+
+archive-patched: archive-libxml2-patched
+
+patched-archived: libxml2-patched-archived
+
+patched-extracted: libxml2-patched-extracted
+
+########################################################################
+list-build: list-libxml2-build
+
+extract-build: extract-libxml2-build
+
+archive-build: archive-libxml2-build
+
+build-archived: libxml2-build-archived
+
+build-extracted: libxml2-build-extracted
+
+########################################################################
 list: list-libxml2
 
 extract: extract-libxml2
@@ -298,6 +338,7 @@ install-libxml2-docs: $(LIBXML2_DOCS_PREFIX)
 	@(echo Extracting $(LIBXML2_DOCS_TGZ)...;\
 	  (($(LIBXML2_EXTRACT_DOCS_TGZ)) || (exit 1)))
 
+########################################################################
 #
 # List libxml2 Patch
 #
@@ -312,6 +353,51 @@ extract-libxml2-patch: $(LIBXML2_DIR)
 	@(echo Extracting $(LIBXML2_PATCH_TGZ)...;\
 	  (($(LIBXML2_EXTRACT_PATCH_TGZ)) || (exit 1)))
 
+########################################################################
+#
+# List libxml2 patched
+#
+list-libxml2-patched: $(LIBXML2_PATCHED_TGZ)
+	@(echo Listing $(LIBXML2_PATCHED_TGZ)...;\
+	  (($(LIBXML2_LIST_PATCHED_TGZ)) || (exit 1)))
+
+#
+# Extract libxml2 patched
+#
+extract-libxml2-patched: $(LIBXML2_PATCHED_TGZ)
+	@(echo Extracting $(LIBXML2_PATCHED_TGZ)...;\
+	  (($(LIBXML2_EXTRACT_PATCHED_TGZ)) || (exit 1)))
+
+#
+# Archive libxml2 patched
+#
+archive-libxml2-patched: 
+	@(echo Archiving $(LIBXML2_DIR) to $(LIBXML2_PATCHED_TGZ)...;\
+	  (($(LIBXML2_ARCHIVE) $(LIBXML2_PATCHED_TGZ) $(LIBXML2_DIR)) || (exit 1)))
+
+########################################################################
+#
+# List libxml2 build
+#
+list-libxml2-build: $(LIBXML2_BUILD_TGZ)
+	@(echo Listing $(LIBXML2_BUILD_TGZ)...;\
+	  (($(LIBXML2_LIST_BUILD_TGZ)) || (exit 1)))
+
+#
+# Extract libxml2 build
+#
+extract-libxml2-build: $(LIBXML2_BUILD_TGZ)
+	@(echo Extracting $(LIBXML2_BUILD_TGZ)...;\
+	  (($(LIBXML2_EXTRACT_BUILD_TGZ)) || (exit 1)))
+
+#
+# Archive libxml2 build
+#
+archive-libxml2-build: 
+	@(echo Archiving $(LIBXML2_DIR) to $(LIBXML2_BUILD_TGZ)...;\
+	  (($(LIBXML2_ARCHIVE) $(LIBXML2_BUILD_TGZ) $(LIBXML2_DIR)) || (exit 1)))
+
+########################################################################
 #
 # List libxml2
 #
@@ -324,6 +410,9 @@ list-libxml2:
 #
 extract-libxml2: unextract-libxml2 $(LIBXML2_DIR)
 
+#
+# Unextract libxml2
+#
 unextract-libxml2: 
 	@(echo Removing $(LIBXML2_DIR)...;\
 	  (($(LIBXML2_REMOVE_DIR)) || (exit 1)))
@@ -389,20 +478,48 @@ $(LIBXML2_DOCS_PREFIX):
 	@(echo Makeing Directory $(LIBXML2_DOCS_PREFIX)...;\
 	  (($(LIBXML2_MKDIR) $(LIBXML2_DOCS_PREFIX)) || (exit 1)))
 
+########################################################################
+#
+# libxml2 patch extracted
+#
+libxml2-patch-extracted: 
+	@(echo $(LIBXML2_EXTRACT) $(LIBXML2_PATCH_TGZ))
+
+########################################################################
+#
+# libxml2 patched archived
+#
+libxml2-patched-archived: 
+	@(echo $(LIBXML2_ARCHIVE) $(LIBXML2_PATCHED_TGZ))
+	  
+#
+# libxml2 patched extracted
+#
+libxml2-patched-extracted: 
+	@(echo $(LIBXML2_EXTRACT) $(LIBXML2_PATCHED_TGZ))
+
+########################################################################
+#
+# libxml2 build archived
+#
+libxml2-build-archived: 
+	@(echo $(LIBXML2_ARCHIVE) $(LIBXML2_BUILD_TGZ))
+	  
+#
+# libxml2 build extracted
+#
+libxml2-build-extracted: 
+	@(echo $(LIBXML2_EXTRACT) $(LIBXML2_BUILD_TGZ))
+
+########################################################################
 #
 # libxml2 archived
 #
 libxml2-archived: 
-	@(echo $(LIBXML2_TGZ))
+	@(echo $(LIBXML2_ARCHIVE) $(LIBXML2_TGZ))
 	  
 #
 # libxml2 extracted
 #
 libxml2-extracted: 
 	@(echo $(LIBXML2_EXTRACT) $(LIBXML2_TGZ))
-
-
-
-
-        
-

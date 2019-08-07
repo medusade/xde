@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2017 $organization$
+# Copyright (c) 1988-2019 $organization$
 #
 # This software is provided by the author and contributors ``as is'' 
 # and any express or implied warranties, including, but not limited to, 
@@ -16,7 +16,7 @@
 #   File: Makefile
 #
 # Author: $author$
-#   Date: 12/18/2017
+#   Date: 8/6/2019
 #
 # Thirdpary Makefile for libxslt
 ########################################################################
@@ -26,19 +26,6 @@
 # libxml2 defs
 #
 ########################################################################
-LIBXML2_MAKEDIR=$(PWD)
-
-ifndef LIBXSLT_UNAME
-LIBXSLT_UNAME = $(shell uname)
-endif
-
-ifndef LIBXSLT_OS
-ifneq ($(LIBXSLT_UNAME), Darwin)
-LIBXSLT_OS = linux
-else
-LIBXSLT_OS = macosx
-endif
-endif
 
 #
 # libxml2 version
@@ -70,6 +57,18 @@ LIBXML2_DIR = $(LIBXML2_NAME)
 #
 ########################################################################
 LIBXSLT_MAKEDIR=$(PWD)
+
+ifndef LIBXSLT_UNAME
+LIBXSLT_UNAME = $(shell uname)
+endif
+
+ifndef LIBXSLT_OS
+ifneq ($(LIBXSLT_UNAME), Darwin)
+LIBXSLT_OS = linux
+else
+LIBXSLT_OS = macosx
+endif
+endif
 
 #
 # libxslt version
@@ -107,10 +106,14 @@ LIBXSLT_COMPRESSED_SEPARATOR = $(LIBXSLT_ARCHIVE_SEPARATOR)
 LIBXSLT_EXTRACT_DIR = $(LIBXSLT_NAME)
 LIBXSLT_TGZ_PREFIX = 
 LIBXSLT_TGZ = $(LIBXSLT_NAME)$(LIBXSLT_TGZ_PREFIX)$(LIBXSLT_ARCHIVED_SEPARATOR)$(LIBXSLT_ARCHIVED)$(LIBXSLT_COMPRESSED_SEPARATOR)$(LIBXSLT_COMPRESSED)
-LIBXSLT_PATCH_TGZ_PREFIX = $(LIBXSLT_NAME_SEPARATOR)patch
+LIBXSLT_PATCH_TGZ_PREFIX = $(LIBXSLT_NAME_SEPARATOR)xde-windows-patch
 LIBXSLT_PATCH_TGZ = $(LIBXSLT_NAME)$(LIBXSLT_PATCH_TGZ_PREFIX)$(LIBXSLT_ARCHIVED_SEPARATOR)$(LIBXSLT_ARCHIVED)$(LIBXSLT_COMPRESSED_SEPARATOR)$(LIBXSLT_COMPRESSED)
+LIBXSLT_PATCHED_TGZ_PREFIX = $(LIBXSLT_PATCH_TGZ_PREFIX)ed
+LIBXSLT_PATCHED_TGZ = $(LIBXSLT_NAME)$(LIBXSLT_PATCHED_TGZ_PREFIX)$(LIBXSLT_ARCHIVED_SEPARATOR)$(LIBXSLT_ARCHIVED)$(LIBXSLT_COMPRESSED_SEPARATOR)$(LIBXSLT_COMPRESSED)
 LIBXSLT_DOCS_TGZ_PREFIX = $(LIBXSLT_NAME_SEPARATOR)docs
 LIBXSLT_DOCS_TGZ = $(LIBXSLT_NAME)$(LIBXSLT_DOCS_TGZ_PREFIX)$(LIBXSLT_ARCHIVED_SEPARATOR)$(LIBXSLT_ARCHIVED)$(LIBXSLT_COMPRESSED_SEPARATOR)$(LIBXSLT_COMPRESSED)
+LIBXSLT_BUILD_TGZ_PREFIX = $(LIBXSLT_NAME_SEPARATOR)build
+LIBXSLT_BUILD_TGZ = $(LIBXSLT_NAME)$(LIBXSLT_BUILD_TGZ_PREFIX)$(LIBXSLT_ARCHIVED_SEPARATOR)$(LIBXSLT_ARCHIVED)$(LIBXSLT_COMPRESSED_SEPARATOR)$(LIBXSLT_COMPRESSED)
 
 #
 # libxslt extract
@@ -156,15 +159,25 @@ LIBXSLT_EXTRACT_PATCH = $(LIBXSLT_EXTRACT)
 LIBXSLT_LIST_PATCH_TGZ = $(LIBXSLT_LIST_PATCH) $(LIBXSLT_PATCH_TGZ)
 LIBXSLT_EXTRACT_PATCH_TGZ = $(LIBXSLT_EXTRACT_PATCH) $(LIBXSLT_PATCH_TGZ)
 
+LIBXSLT_LIST_PATCHED = $(LIBXSLT_LIST)
+LIBXSLT_EXTRACT_PATCHED = $(LIBXSLT_EXTRACT)
+LIBXSLT_LIST_PATCHED_TGZ = $(LIBXSLT_LIST_PATCHED) $(LIBXSLT_PATCHED_TGZ)
+LIBXSLT_EXTRACT_PATCHED_TGZ = $(LIBXSLT_EXTRACT_PATCHED) $(LIBXSLT_PATCHED_TGZ)
+
 LIBXSLT_LIST_DOCS = $(LIBXSLT_LIST)
 LIBXSLT_EXTRACT_DOCS = $(LIBXSLT_EXTRACT)
 LIBXSLT_LIST_DOCS_TGZ = $(LIBXSLT_LIST_DOCS) $(LIBXSLT_DOCS_TGZ)
 LIBXSLT_EXTRACT_DOCS_TGZ = $(LIBXSLT_EXTRACT_DOCS) $(LIBXSLT_DOCS_TGZ) -C$(LIBXSLT_DOCS_PREFIX)
 
+LIBXSLT_LIST_BUILD = $(LIBXSLT_LIST)
+LIBXSLT_EXTRACT_BUILD = $(LIBXSLT_EXTRACT)
+LIBXSLT_LIST_BUILD_TGZ = $(LIBXSLT_LIST_BUILD) $(LIBXSLT_BUILD_TGZ)
+LIBXSLT_EXTRACT_BUILD_TGZ = $(LIBXSLT_EXTRACT_BUILD) $(LIBXSLT_BUILD_TGZ)
+
 #
 # libxslt build
 #
-LIBXSLT_BUILD = $(HOME)/build
+LIBXSLT_BUILD = $(LIBXSLT_MAKEDIR)/build
 LIBXSLT_PREFIX = $(LIBXSLT_BUILD)/$(LIBXSLT_INSTALL_NAME)
 LIBXSLT_EXEC_PREFIX = $(LIBXSLT_PREFIX)
 LIBXSLT_CONF_PREFIX = $(LIBXSLT_PREFIX)
@@ -228,10 +241,36 @@ help: help-libxslt
 
 list-docs: list-libxslt-docs
 
+########################################################################
 list-patch: list-libxslt-patch
 
 extract-patch: extract-libxslt-patch
 
+patch-extracted: libxslt-patch-extracted
+
+########################################################################
+list-patched: list-libxslt-patched
+
+extract-patched: extract-libxslt-patched
+
+archive-patched: archive-libxslt-patched
+
+patched-archived: libxslt-patched-archived
+
+patched-extracted: libxslt-patched-extracted
+
+########################################################################
+list-build: list-libxslt-build
+
+extract-build: extract-libxslt-build
+
+archive-build: archive-libxslt-build
+
+build-archived: libxslt-build-archived
+
+build-extracted: libxslt-build-extracted
+
+########################################################################
 list: list-libxslt
 
 extract: extract-libxslt
@@ -330,6 +369,7 @@ install-libxslt-docs: $(LIBXSLT_DOCS_PREFIX)
 	@(echo Extracting $(LIBXSLT_DOCS_TGZ)...;\
 	  (($(LIBXSLT_EXTRACT_DOCS_TGZ)) || (exit 1)))
 
+########################################################################
 #
 # List libxslt Patch
 #
@@ -344,6 +384,51 @@ extract-libxslt-patch: $(LIBXSLT_DIR)
 	@(echo Extracting $(LIBXSLT_PATCH_TGZ)...;\
 	  (($(LIBXSLT_EXTRACT_PATCH_TGZ)) || (exit 1)))
 
+########################################################################
+#
+# List libxslt patched
+#
+list-libxslt-patched: $(LIBXSLT_PATCHED_TGZ)
+	@(echo Listing $(LIBXSLT_PATCHED_TGZ)...;\
+	  (($(LIBXSLT_LIST_PATCHED_TGZ)) || (exit 1)))
+
+#
+# Extract libxslt patched
+#
+extract-libxslt-patched: $(LIBXSLT_PATCHED_TGZ)
+	@(echo Extracting $(LIBXSLT_PATCHED_TGZ)...;\
+	  (($(LIBXSLT_EXTRACT_PATCHED_TGZ)) || (exit 1)))
+
+#
+# Archive libxslt patched
+#
+archive-libxslt-patched: 
+	@(echo Archiving $(LIBXSLT_DIR) to $(LIBXSLT_PATCHED_TGZ)...;\
+	  (($(LIBXSLT_ARCHIVE) $(LIBXSLT_PATCHED_TGZ) $(LIBXSLT_DIR)) || (exit 1)))
+
+########################################################################
+#
+# List libxslt build
+#
+list-libxslt-build: $(LIBXSLT_BUILD_TGZ)
+	@(echo Listing $(LIBXSLT_BUILD_TGZ)...;\
+	  (($(LIBXSLT_LIST_BUILD_TGZ)) || (exit 1)))
+
+#
+# Extract libxslt build
+#
+extract-libxslt-build: $(LIBXSLT_BUILD_TGZ)
+	@(echo Extracting $(LIBXSLT_BUILD_TGZ)...;\
+	  (($(LIBXSLT_EXTRACT_BUILD_TGZ)) || (exit 1)))
+
+#
+# Archive libxslt build
+#
+archive-libxslt-build: 
+	@(echo Archiving $(LIBXSLT_DIR) to $(LIBXSLT_BUILD_TGZ)...;\
+	  (($(LIBXSLT_ARCHIVE) $(LIBXSLT_BUILD_TGZ) $(LIBXSLT_DIR)) || (exit 1)))
+
+########################################################################
 #
 # List libxslt
 #
@@ -421,20 +506,49 @@ $(LIBXSLT_DOCS_PREFIX):
 	@(echo Makeing Directory $(LIBXSLT_DOCS_PREFIX)...;\
 	  (($(LIBXSLT_MKDIR) $(LIBXSLT_DOCS_PREFIX)) || (exit 1)))
 
+########################################################################
+#
+# libxslt patch extracted
+#
+libxslt-patch-extracted: 
+	@(echo $(LIBXSLT_EXTRACT) $(LIBXSLT_PATCH_TGZ))
+
+########################################################################
+#
+# libxslt patched archived
+#
+libxslt-patched-archived: 
+	@(echo $(LIBXSLT_ARCHIVE) $(LIBXSLT_PATCHED_TGZ))
+	  
+#
+# libxslt patched extracted
+#
+libxslt-patched-extracted: 
+	@(echo $(LIBXSLT_EXTRACT) $(LIBXSLT_PATCHED_TGZ))
+
+########################################################################
+#
+# libxslt build archived
+#
+libxslt-build-archived: 
+	@(echo $(LIBXSLT_ARCHIVE) $(LIBXSLT_BUILD_TGZ))
+	  
+#
+# libxslt build extracted
+#
+libxslt-build-extracted: 
+	@(echo $(LIBXSLT_EXTRACT) $(LIBXSLT_BUILD_TGZ))
+
+########################################################################
 #
 # libxslt archived
 #
 libxslt-archived: 
-	@(echo $(LIBXSLT_TGZ))
+	@(echo $(LIBXSLT_ARCHIVE) $(LIBXSLT_TGZ))
 	  
 #
 # libxslt extracted
 #
 libxslt-extracted: 
 	@(echo $(LIBXSLT_EXTRACT) $(LIBXSLT_TGZ))
-
-
-
-
-        
 

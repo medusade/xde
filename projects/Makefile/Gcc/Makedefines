@@ -70,6 +70,7 @@ COMPILER_PREFIX =
 DEFINES = \
 $(DBGFLAGS) \
 $(BUILD_DEFINE) \
+-DDB_PRINTF=platform_db_printf \
 
 INCLUDES = \
 -I$(PKG)/$(SRC) \
