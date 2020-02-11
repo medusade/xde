@@ -129,7 +129,7 @@ public:
         SetDidUsage(true);
 
         OutFormatted
-        ("Usage: %s [options]%s%s\n", argv[0], 
+        ("Usage: %s [options]%s%s\n", UsageName(argv[0]), 
          (arguments)?((arguments[0])?(" "):("")):(""),
          (arguments)?(arguments):(""));
 
@@ -156,6 +156,36 @@ public:
 #else // !defined(COPTMAIN_MEMBER_FUNCS_IMPLEMENT) 
 #endif // !defined(COPTMAIN_MEMBER_FUNCS_IMPLEMENT) 
         return err;
+    }
+#endif // defined(COPTMAIN_MEMBER_FUNCS_INTERFACE) 
+
+    ///////////////////////////////////////////////////////////////////////
+    //  Function: UsageName
+    //
+    //    Author: $author$
+    //      Date: 11/28/2019
+    ///////////////////////////////////////////////////////////////////////
+    virtual char_t* UsageName(char_t* arg) const
+#if defined(COPTMAIN_MEMBER_FUNCS_INTERFACE)
+    = 0;
+#else // defined(COPTMAIN_MEMBER_FUNCS_INTERFACE) 
+    {
+        char_t* name = arg;
+#if !defined(COPTMAIN_MEMBER_FUNCS_IMPLEMENT)
+        for (char_t *s = 0, *i = arg, c = *i; c != 0; c = *(++i)) {
+            switch ((char)c) {
+            case ':':
+            case '\\':
+            case '/':
+                if (*(s = (i + 1)) != 0) {
+                    name = s;
+                }
+                break;
+            }
+        }
+#else // !defined(COPTMAIN_MEMBER_FUNCS_IMPLEMENT) 
+#endif // !defined(COPTMAIN_MEMBER_FUNCS_IMPLEMENT) 
+        return name;
     }
 #endif // defined(COPTMAIN_MEMBER_FUNCS_INTERFACE) 
 

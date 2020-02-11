@@ -63,6 +63,7 @@ class c_INSTANCE_CLASS cStringT
 public:
     typedef TImplement cImplements;
     typedef TExtend cExtends;
+    typedef cStringT cDerives;
 
 // include cString interface member definitions
 //
@@ -859,6 +860,31 @@ public:
 #else // !defined(CSTRINGT_MEMBER_FUNCS_IMPLEMENT) 
 #endif // !defined(CSTRINGT_MEMBER_FUNCS_IMPLEMENT) 
         return length;
+    }
+#endif // defined(CSTRINGT_MEMBER_FUNCS_INTERFACE) 
+
+    ///////////////////////////////////////////////////////////////////////
+    //  Function: Compare
+    //
+    //    Author: $author$
+    //      Date: 7/20/2011
+    ///////////////////////////////////////////////////////////////////////
+    virtual int Compare(const char_t* chars, ssize_t length = -1) const
+#if defined(CSTRINGT_MEMBER_FUNCS_INTERFACE)
+    = 0;
+#else // defined(CSTRINGT_MEMBER_FUNCS_INTERFACE) 
+    {
+        int unequal = 1;
+#if !defined(CSTRINGT_MEMBER_FUNCS_IMPLEMENT)
+        if (0 < (length)) {
+            cDerives to(chars, length);
+            unequal = cExtends::compare(to.Chars()); 
+        } else {
+            unequal = cExtends::compare(chars); 
+        }
+#else // !defined(CSTRINGT_MEMBER_FUNCS_IMPLEMENT) 
+#endif // !defined(CSTRINGT_MEMBER_FUNCS_IMPLEMENT) 
+        return unequal;
     }
 #endif // defined(CSTRINGT_MEMBER_FUNCS_INTERFACE) 
 

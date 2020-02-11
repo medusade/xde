@@ -40,6 +40,7 @@
 /**
  * Unix
  */
+#include <errno.h>
 #include <unistd.h>
 #include <stdint.h>
 #include <stdlib.h>
@@ -49,6 +50,8 @@
 #endif /* defined(WIN32) */
 
 #include <stdarg.h>
+#include <stdio.h>
+#include <string.h>
 
 #if defined(__cplusplus)
 extern "C" {

@@ -273,6 +273,47 @@ public:
 #endif // defined(CMAINT_MEMBER_FUNCS_INTERFACE) 
 
     ///////////////////////////////////////////////////////////////////////
+    //  Function: OutL
+    //
+    //    Author: $author$
+    //      Date: 11/28/2019
+    ///////////////////////////////////////////////////////////////////////
+    virtual ssize_t OutL(const char_t* chars, ...)
+#if defined(CMAINT_MEMBER_FUNCS_INTERFACE)
+    = 0;
+#else // defined(CMAINT_MEMBER_FUNCS_INTERFACE) 
+    {
+        ssize_t count = -e_ERROR_FAILED;
+#if !defined(CMAINT_MEMBER_FUNCS_IMPLEMENT)
+        va_list va;
+        va_start(va, chars);
+        count = OutV(chars, va);
+        va_end(va);
+#else // !defined(CMAINT_MEMBER_FUNCS_IMPLEMENT) 
+#endif // !defined(CMAINT_MEMBER_FUNCS_IMPLEMENT) 
+        return count;
+    }
+#endif // defined(CMAINT_MEMBER_FUNCS_INTERFACE) 
+    ///////////////////////////////////////////////////////////////////////
+    //  Function: OutV
+    //
+    //    Author: $author$
+    //      Date: 11/28/2019
+    ///////////////////////////////////////////////////////////////////////
+    virtual ssize_t OutV(const char_t* chars, va_list va)
+#if defined(CMAINT_MEMBER_FUNCS_INTERFACE)
+    = 0;
+#else // defined(CMAINT_MEMBER_FUNCS_INTERFACE) 
+    {
+        ssize_t count = -e_ERROR_FAILED;
+#if !defined(CMAINT_MEMBER_FUNCS_IMPLEMENT)
+        count = m_out.WriteV(chars, va);
+#else // !defined(CMAINT_MEMBER_FUNCS_IMPLEMENT) 
+#endif // !defined(CMAINT_MEMBER_FUNCS_IMPLEMENT) 
+        return count;
+    }
+#endif // defined(CMAINT_MEMBER_FUNCS_INTERFACE) 
+    ///////////////////////////////////////////////////////////////////////
     //  Function: OutFormatted
     //
     //    Author: $author$
@@ -417,13 +458,17 @@ public:
      char_t** env)
     {
         int err = 0;
+        tCharFile out(stderr);
         
-        c_DEBUG_INIT();
+        c_DEBUG_INIT_OUT(&out);
 
-        if ((m_theMain))
+        if ((m_theMain)) {
+            c_DB_INFO("() m_theMain->Main(argc, argv, env)...");
             err = m_theMain->Main(argc, argv, env);
-        else
-        c_DB_ERROR("() m_theMain == 0");
+            c_DB_INFO("() ..." << err << " = m_theMain->Main(argc, argv, env)");
+        } else {
+            c_DB_ERROR("() m_theMain == 0");
+        }
 
         c_DEBUG_FINISH();
         return err;

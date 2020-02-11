@@ -28,7 +28,11 @@
 #include "cStreamInterface.hpp"
 #include "cString.hpp"
 
+#if defined(DEBUG_BUILD)
+#define CDEBUG_DEFAULT_LEVELS e_DEBUG_LEVELS_FUNC
+#else // defined(DEBUG_BUILD)
 #define CDEBUG_DEFAULT_LEVELS e_DEBUG_LEVELS_WARNING
+#endif // defined(DEBUG_BUILD)
 
 #if defined(c_NAMESPACE)
 namespace c_NAMESPACE {
@@ -47,8 +51,14 @@ cDebugInterface::GetInstance().Initialize(levels, out)
 #define c_DEBUG_INIT_LEVELS(levels)\
 cDebugInterface::GetInstance().Initialize(levels)
 
+#define c_DEBUG_INIT_OUT(out)\
+cDebugInterface::GetInstance().Initialize(CDEBUG_DEFAULT_LEVELS, out)
+
 #define c_DEBUG_INIT()\
 cDebugInterface::GetInstance().Initialize()
+
+#define c_DEBUG_FINI()\
+cDebugInterface::GetInstance().Finalize()
 
 #define c_DEBUG_FINISH()\
 cDebugInterface::GetInstance().Finalize()

@@ -66,13 +66,13 @@ public:
     (cCharStreamInterface &result, cTInterface &t, 
      const char* buffer, TLENGTH length) const
     {
+        const char* part = 0;
+        TLENGTH plength = 0;
         cCharSplitter splitter;
-        const char* part;
-        TLENGTH plength;
 
         if (length>0)
         {
-            if (VOLUME_SEPARATOR_CHAR)
+            if (PLATFORM_VOLUME_SEPARATOR_CHAR)
             if ((part = splitter.RightOf
                 (plength, PLATFORM_VOLUME_SEPARATOR_CHAR, buffer)))
                 result.Write(buffer, length-plength-1);
@@ -199,13 +199,12 @@ public:
     (cCharStreamInterface &result, cTInterface &t, 
      const char* buffer, TLENGTH length) const
     {
+        const char* part = 0;
+        TLENGTH plength = 0;
         cCharSplitter splitter;
-        const char* part;
-        TLENGTH plength;
 
         if (length>0)
         {
-            part = 0;
             if (PLATFORM_DIRECTORY_SEPARATOR_CHAR)
             if (!(part = splitter.RightOf
                 (plength, PLATFORM_DIRECTORY_SEPARATOR_CHAR, buffer)))
@@ -216,12 +215,10 @@ public:
                 part = splitter.RightOf
                 (plength, PLATFORM_VOLUME_SEPARATOR_CHAR, buffer);
 
-            if (part)
-                length -= (plength+1);
+            if (part) length = plength;
             else part = buffer;
 
-            if (length > 0)
-                result.Write(part, length);
+            result.Write(part, length);
         }
         return e_ERROR_NONE;
     }

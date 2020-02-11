@@ -248,6 +248,24 @@ typedef SSIZE_T SSIZET;
 #define V_NULL_ATOM NULL_ATOM
 #endif /* defined(NO_TEMPLATE_PARAMETER_CAST) */
 
+typedef BYTE byte_t;
+typedef WORD word_t;
+typedef UINT uint;
+typedef USHORT ushort;
+typedef ULONG ulong;
+
+typedef useconds_t nseconds_t;
+typedef useconds_t mseconds_t;
+typedef mseconds_t seconds_t;
+typedef seconds_t minutes_t;
+typedef seconds_t hours_t;
+typedef unsigned days_t;
+typedef unsigned months_t;
+typedef unsigned years_t;
+typedef days_t day_t;
+typedef months_t month_t;
+typedef years_t year_t;
+
 #if defined(__cplusplus)
 extern "C" {
 #endif /* defined(__cplusplus) */

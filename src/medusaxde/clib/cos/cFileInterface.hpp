@@ -25,6 +25,7 @@
 
 #if !defined(CFILEINTERFACET_MEMBERS_ONLY)
 #include "cStreamInterface.hpp"
+#include "cplatform_stdio.h"
 
 #if defined(c_NAMESPACE)
 namespace c_NAMESPACE {

@@ -265,6 +265,7 @@ class c_EXPORT_CLASS cUuid
 public:
     typedef cUuidImplement cImplements;
     typedef cUuidExtend cExtends;
+
     ///////////////////////////////////////////////////////////////////////
     //  Constructor: cUuid
     //
@@ -318,6 +319,10 @@ public:
                 c_DB_ERROR("() Cannot get Ethernet or token-ring hardware address for this computer");
 #else // defined(CUUID_WINDOWS_API)
 // Unix
+        // get node ID from the MAC address.
+        //
+        if (!(m_macAddr.GetCurrent())) {
+        }
 #endif // defined(CUUID_WINDOWS_API)
         return false;
     }
@@ -397,6 +402,11 @@ public:
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
     sUuid m_uuid;
+#if defined(CUUID_UNIX_API) 
+// Unix 
+    cMacAddress m_macAddr;
+    //CEvRandomBYTEReader m_random;
+#endif // defined(CUUID_UNIX_API) 
 };
 
 #if defined(c_NAMESPACE)
