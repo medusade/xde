@@ -27,46 +27,28 @@
 # pkg-config --cflags --libs libxml2
 #
 
-ifndef USE_HOME_BUILD_libxml2
-USE_HOME_BUILD_libxml2 = yes
-endif
-
-ifeq ($(USE_HOME_BUILD_libxml2),yes)
 #
 # home build libxml2
 #
 build_libxml2_USRDEFINES += \
 
 build_libxml2_USRINCLUDES += \
--I${HOME}/build/libxml2/include/libxml2 
+-I${OTHER_THIRDPARTY_VERSION_PKG}/libxml2/build/libxml2/include/libxml2 
 
 build_libxml2_USRCXXFLAGS += \
 
 build_libxml2_USRLIBDIRS += \
--L${HOME}/build/libxml2/lib 
+-L${OTHER_THIRDPARTY_VERSION_PKG}/libxml2/build/libxml2/lib 
 
 build_libxml2_LIBS += \
 -lxml2 
 
-build_libxml2_FRAMEWORKS += \
-
-else
-#
-# build libxml2
-#
-build_libxml2_USRDEFINES += \
-
-build_libxml2_USRINCLUDES += \
-
-build_libxml2_USRCXXFLAGS += \
-
-build_libxml2_USRLIBDIRS += \
-
+ifeq ($(OS),linux)
 build_libxml2_LIBS += \
+-lz
+endif # eq ($(OS),linux)
 
 build_libxml2_FRAMEWORKS += \
-
-endif
 
 ########################################################################
 # libxslt
@@ -74,11 +56,6 @@ endif
 # pkg-config --cflags --libs libxslt
 #
 
-ifndef USE_HOME_BUILD_libxslt
-USE_HOME_BUILD_libxslt = yes
-endif
-
-ifeq ($(USE_HOME_BUILD_libxslt),yes)
 #
 # home build libxslt
 #
@@ -86,14 +63,14 @@ build_libxslt_USRDEFINES += \
 ${build_libxml2_USRDEFINES} 
 
 build_libxslt_USRINCLUDES += \
--I${HOME}/build/libxslt/include \
+-I${OTHER_THIRDPARTY_VERSION_PKG}/libxslt/build/libxslt/include \
 ${build_libxml2_USRINCLUDES} 
 
 build_libxslt_USRCXXFLAGS += \
 ${build_libxml2_USRCXXFLAGS} 
 
 build_libxslt_USRLIBDIRS += \
--L${HOME}/build/libxslt/lib \
+-L${OTHER_THIRDPARTY_VERSION_PKG}/libxslt/build/libxslt/lib \
 ${build_libxml2_USRLIBDIRS} 
 
 build_libxslt_LIBS += \
@@ -102,24 +79,6 @@ build_libxslt_LIBS += \
 ${build_libxml2_LIBS} 
 
 build_libxslt_FRAMEWORKS += \
-
-else
-#
-# build libxslt
-#
-build_libxslt_USRDEFINES += \
-
-build_libxslt_USRINCLUDES += \
-
-build_libxslt_USRCXXFLAGS += \
-
-build_libxslt_USRLIBDIRS += \
-
-build_libxslt_LIBS += \
-
-build_libxslt_FRAMEWORKS += \
-
-endif
 
 ########################################################################
 # xde
