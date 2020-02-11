@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2018 $organization$
+# Copyright (c) 1988-2019 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -13,71 +13,69 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: t.pri
+#   File: uuid.pri
 #
 # Author: $author$
-#   Date: 11/14/2018
+#   Date: 11/28/2019
 #
-# QtCreator .pri file for xde executable t
+# QtCreator .pri file for medusaxde executable uuid
 ########################################################################
 
 ########################################################################
-# t
+# uuid
 
-# t TARGET
+# uuid TARGET
 #
-t_TARGET = t
+uuid_TARGET = uuid
 
-# t INCLUDEPATH
+# uuid INCLUDEPATH
 #
-t_INCLUDEPATH += \
-$${xde_INCLUDEPATH} \
-$${medusade_INCLUDEPATH} \
+uuid_INCLUDEPATH += \
+$${medusaxde_INCLUDEPATH} \
 
-# t DEFINES
+# uuid DEFINES
 #
-t_DEFINES += \
-$${xde_DEFINES} \
-$${medusade_DEFINES} \
+uuid_DEFINES += \
+$${medusaxde_DEFINES} \
 
 ########################################################################
-# t OBJECTIVE_HEADERS
+# uuid OBJECTIVE_HEADERS
 #
-#t_OBJECTIVE_HEADERS += \
-#$${XDE_SRC}/xde/base/Base.hh \
+#uuid_OBJECTIVE_HEADERS += \
+#$${MEDUSAXDE_SRC}/medusaxde/base/Base.hh \
 
-# t OBJECTIVE_SOURCES
+# uuid OBJECTIVE_SOURCES
 #
-#t_OBJECTIVE_SOURCES += \
-#$${XDE_SRC}/xde/base/Base.mm \
-
-########################################################################
-# t HEADERS
-#
-t_HEADERS += \
-$${XDE_SRC}/clib/ct/ctmain.hxx \
-$${XDE_SRC}/clib/cos/argmain.hxx \
-$${xde_t_crypto_function_HEADERS} \
-$${xde_crypto_HEADERS} \
-
-# t SOURCES
-#
-t_SOURCES += \
-$${XDE_SRC}/clib/ct/ctmain.cxx \
-$${XDE_SRC}/clib/cos/argmain.cxx \
-$${xde_t_function_SOURCES} \
-$${xde_t_crypto_function_SOURCES} \
-$${xde_crypto_SOURCES} \
+#uuid_OBJECTIVE_SOURCES += \
+#$${MEDUSAXDE_SRC}/medusaxde/base/Base.mm \
 
 ########################################################################
-# t FRAMEWORKS
+# uuid HEADERS
 #
-t_FRAMEWORKS += \
-$${xde_FRAMEWORKS} \
-$${medusade_FRAMEWORKS} \
+uuid_HEADERS += \
+$${MEDUSAXDE_SRC}/clib/cos/cnetwork/cMacAddress.hpp \
+$${MEDUSAXDE_SRC}/clib/cos/cnetwork/cUuid.hpp \
+\
+$${MEDUSAXDE_SRC}/capp/cconsole/cuuid/cUuidMain.hpp \
 
-# t LIBS
+# uuid SOURCES
 #
-t_LIBS += \
-$${xde_LIBS} \
-$${medusade_LIBS} \
+uuid_SOURCES += \
+$${MEDUSAXDE_SRC}/clib/cos/cnetwork/cMacAddress.cpp \
+$${MEDUSAXDE_SRC}/clib/cos/cnetwork/cUuid.cpp \
+\
+$${MEDUSAXDE_SRC}/capp/cconsole/cuuid/cUuidMain.cpp \
+$${MEDUSAXDE_SRC}/clib/cos/cMain_main.cpp \
+
+########################################################################
+# uuid FRAMEWORKS
+#
+uuid_FRAMEWORKS += \
+$${medusaxde_FRAMEWORKS} \
+
+# uuid LIBS
+#
+uuid_LIBS += \
+$${medusaxde_LIBS} \
+
+

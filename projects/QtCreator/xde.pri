@@ -60,7 +60,9 @@ $${XDE_SRC}/clib/ccgi \
 $${XDE_SRC}/clib/cxttp \
 $${XDE_SRC}/clib/cyy \
 $${XDE_SRC}/clib/cxsl \
+$${XDE_SRC}/clib/ct/ctcrypto \
 $${XDE_SRC}/clib/ct \
+$${XDE_SRC}/clib/ccrypto \
 \
 $${XDE_SRC}/clib/csocket \
 $${XDE_SRC}/clib/cfs \
@@ -95,6 +97,44 @@ $${XDE_SRC}/clib/ct/ctdatefunctions.cxx \
 $${XDE_SRC}/clib/ct/ctconditionalfunctions.cxx \
 $${XDE_SRC}/clib/ct/ctstringfunctions.cxx \
 
+# xde crypto HEADERS
+#
+xde_crypto_HEADERS += \
+$${XDE_SRC}/clib/ccrypto/ccryptobase.hxx \
+$${XDE_SRC}/clib/ccrypto/ccryptohash.hxx \
+$${XDE_SRC}/clib/ccrypto/ccryptomd5.hxx \
+$${XDE_SRC}/clib/ccrypto/ccryptosha1.hxx \
+$${XDE_SRC}/clib/ccrypto/ccryptosha256.hxx \
+$${XDE_SRC}/clib/ccrypto/ccryptosha512.hxx \
+
+# xde crypto SOURCES
+#
+xde_crypto_SOURCES += \
+$${XDE_SRC}/clib/ccrypto/ccryptobase.cxx \
+$${XDE_SRC}/clib/ccrypto/ccryptohash.cxx \
+$${XDE_SRC}/clib/ccrypto/ccryptomd5.cxx \
+$${XDE_SRC}/clib/ccrypto/ccryptosha1.cxx \
+$${XDE_SRC}/clib/ccrypto/ccryptosha256.cxx \
+$${XDE_SRC}/clib/ccrypto/ccryptosha512.cxx \
+
+# xde t crypto function HEADERS
+#
+xde_t_crypto_function_HEADERS += \
+$${XDE_SRC}/clib/ct/ctcrypto/ctcryptohashfunction.hxx \
+$${XDE_SRC}/clib/ct/ctcrypto/ctmd5function.hxx \
+$${XDE_SRC}/clib/ct/ctcrypto/ctsha1function.hxx \
+$${XDE_SRC}/clib/ct/ctcrypto/ctsha256function.hxx \
+$${XDE_SRC}/clib/ct/ctcrypto/ctsha512function.hxx \
+
+# xde t crypto function SOURCES
+#
+xde_t_crypto_function_SOURCES += \
+$${XDE_SRC}/clib/ct/ctcrypto/ctcryptohashfunction.cxx \
+$${XDE_SRC}/clib/ct/ctcrypto/ctmd5function.cxx \
+$${XDE_SRC}/clib/ct/ctcrypto/ctsha1function.cxx \
+$${XDE_SRC}/clib/ct/ctcrypto/ctsha256function.cxx \
+$${XDE_SRC}/clib/ct/ctcrypto/ctsha512function.cxx \
+
 ########################################################################
 # medusaxde
 MEDUSAXDE_NAME = medusaxde
@@ -128,8 +168,10 @@ $${MEDUSAXDE_SRC}/clib/cxml \
 $${MEDUSAXDE_SRC}/clib/cxttp/chttp/ccgi \
 $${MEDUSAXDE_SRC}/clib/cxttp/chttp \
 $${MEDUSAXDE_SRC}/clib/cxttp \
+$${MEDUSAXDE_SRC}/clib/cos/cnetwork \
 $${MEDUSAXDE_SRC}/clib/cos \
 $${MEDUSAXDE_SRC}/clib/cbase \
+$${MEDUSAXDE_SRC}/clib/cplatform \
 $${MEDUSAXDE_SRC}/clib \
 $${MEDUSAXDE_SRC} \
 $${build_medusaxde_INCLUDEPATH} \
@@ -144,3 +186,29 @@ $${build_medusaxde_DEFINES} \
 medusaxde_LIBS += \
 -L$${MEDUSAXDE_LIB}/lib$${MEDUSAXDE_NAME} \
 -l$${MEDUSAXDE_NAME} \
+
+########################################################################
+# medusade
+MEDUSADE_NAME = medusade
+MEDUSADE_SOURCE = src/medusade
+
+MEDUSADE_PKG = ../../../../..
+MEDUSADE_BLD = ../..
+
+MEDUSADE_PRJ = $${MEDUSADE_PKG}
+MEDUSADE_BIN = $${MEDUSADE_BLD}/bin
+MEDUSADE_LIB = $${MEDUSADE_BLD}/lib
+MEDUSADE_SRC = $${MEDUSADE_PKG}/$${MEDUSADE_SOURCE}
+
+# medusade INCLUDEPATH
+#
+medusade_INCLUDEPATH += \
+$${MEDUSADE_SRC} \
+
+# medusade DEFINES
+#
+medusade_DEFINES += \
+
+# medusade LIBS
+#
+medusade_LIBS += \
