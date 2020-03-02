@@ -29,6 +29,7 @@
 /** 
  * Windows 
  */
+#define PACKED_STRUCT
 #define CTHIS
 #define restrict
 
@@ -95,6 +96,7 @@
 /* Gcc
  */
 #define CTHIS (*this).
+#define PACKED_STRUCT __attribute__ ((packed))
 #if (__GNUC__ < 4)
 #define PLATFORM_RCAST(type) (type)
 #else /* (__GNUC__ < 4) */
@@ -122,6 +124,7 @@
 #endif /* defined(WIN32) */
 
 #define UNDEFINED -1
+#define c_PACKED_STRUCT PACKED_STRUCT
 
 #if defined(__cplusplus)
 extern "C" {

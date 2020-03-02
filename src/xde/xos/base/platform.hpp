@@ -27,4 +27,8 @@
 #define _EXPORT_CLASS c_EXPORT_CLASS
 #endif /// !defined(_EXPORT_CLASS)
 
+#if !defined(_PACKED_STRUCT)
+#define _PACKED_STRUCT c_PACKED_STRUCT
+#endif /// !defined(_PACKED_STRUCT)
+
 #endif /// XOS_BASE_PLATFORM_HPP

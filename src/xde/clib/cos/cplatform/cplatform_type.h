@@ -62,6 +62,12 @@ typedef UINT8 uint8_t;
 typedef UINT16 uint16_t;
 typedef UINT32 uint32_t;
 typedef UINT64 uint64_t;
+
+typedef BYTE byte_t;
+typedef WORD word_t;
+typedef UINT uint;
+typedef USHORT ushort;
+typedef ULONG ulong;
 /*
  * Windows
  **/
@@ -179,6 +185,11 @@ typedef struct _SECURITY_ATTRIBUTES
 } SECURITY_ATTRIBUTES, 
   *PSECURITY_ATTRIBUTES, 
   *LPSECURITY_ATTRIBUTES;
+
+typedef BYTE byte_t;
+typedef WORD word_t;
+typedef unsigned int uint;
+typedef unsigned short ushort;
 /*
  * Unix
  **/
@@ -247,12 +258,6 @@ typedef SSIZE_T SSIZET;
 #define V_NULL_HANDLE NULL_HANDLE
 #define V_NULL_ATOM NULL_ATOM
 #endif /* defined(NO_TEMPLATE_PARAMETER_CAST) */
-
-typedef BYTE byte_t;
-typedef WORD word_t;
-typedef UINT uint;
-typedef USHORT ushort;
-typedef ULONG ulong;
 
 typedef useconds_t nseconds_t;
 typedef useconds_t mseconds_t;

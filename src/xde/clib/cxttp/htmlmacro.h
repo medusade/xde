@@ -37,18 +37,18 @@
 #undef UL_
 #undef _UL
 
-#define AMP ((CTHIS GetContentType()==CTHIS GetContentTypeHTML())?"&amp;":"&")
-#define LT ((CTHIS GetContentType()==CTHIS GetContentTypeHTML())?"&lt;":"<")
-#define GT ((CTHIS GetContentType()==CTHIS GetContentTypeHTML())?"&gt;":">")
-#define BR ((CTHIS GetContentType()==CTHIS GetContentTypeHTML())?"<br>\n":"\n")
-#define H1_ ((CTHIS GetContentType()==CTHIS GetContentTypeHTML())?"<h1>\n":"")
-#define _H1 ((CTHIS GetContentType()==CTHIS GetContentTypeHTML())?"</h1>\n":"\n\n")
-#define B_ ((CTHIS GetContentType()==CTHIS GetContentTypeHTML())?"<b>":"")
-#define _B ((CTHIS GetContentType()==CTHIS GetContentTypeHTML())?"</b>":"")
-#define UL_ ((CTHIS GetContentType()==CTHIS GetContentTypeHTML())?"<ul>":"")
-#define _UL ((CTHIS GetContentType()==CTHIS GetContentTypeHTML())?"</ul>":"\n")
-#define LI_ ((CTHIS GetContentType()==CTHIS GetContentTypeHTML())?"<li>":"")
-#define _LI ((CTHIS GetContentType()==CTHIS GetContentTypeHTML())?"</li>":"\n")
+#define AMP (( (CTHIS GetContentType()==CTHIS GetContentTypeHTML()) || (CTHIS GetContentType()==CTHIS GetContentTypeXML()) )?"&amp;":"&")
+#define LT (( (CTHIS GetContentType()==CTHIS GetContentTypeHTML()) || (CTHIS GetContentType()==CTHIS GetContentTypeXML()) )?"&lt;":"<")
+#define GT (( (CTHIS GetContentType()==CTHIS GetContentTypeHTML()) || (CTHIS GetContentType()==CTHIS GetContentTypeXML()) )?"&gt;":">")
+#define BR (( (CTHIS GetContentType()==CTHIS GetContentTypeHTML()) || (CTHIS GetContentType()==CTHIS GetContentTypeXML()) )?"<br>\n":"\n")
+#define H1_ (( (CTHIS GetContentType()==CTHIS GetContentTypeHTML()) || (CTHIS GetContentType()==CTHIS GetContentTypeXML()) )?"<h1>\n":"")
+#define _H1 (( (CTHIS GetContentType()==CTHIS GetContentTypeHTML()) || (CTHIS GetContentType()==CTHIS GetContentTypeXML()) )?"</h1>\n":"\n\n")
+#define B_ (( (CTHIS GetContentType()==CTHIS GetContentTypeHTML()) || (CTHIS GetContentType()==CTHIS GetContentTypeXML()) )?"<b>":"")
+#define _B (( (CTHIS GetContentType()==CTHIS GetContentTypeHTML()) || (CTHIS GetContentType()==CTHIS GetContentTypeXML()) )?"</b>":"")
+#define UL_ (( (CTHIS GetContentType()==CTHIS GetContentTypeHTML()) || (CTHIS GetContentType()==CTHIS GetContentTypeXML()) )?"<ul>":"")
+#define _UL (( (CTHIS GetContentType()==CTHIS GetContentTypeHTML()) || (CTHIS GetContentType()==CTHIS GetContentTypeXML()) )?"</ul>":"\n")
+#define LI_ (( (CTHIS GetContentType()==CTHIS GetContentTypeHTML()) || (CTHIS GetContentType()==CTHIS GetContentTypeXML()) )?"<li>":"")
+#define _LI (( (CTHIS GetContentType()==CTHIS GetContentTypeHTML()) || (CTHIS GetContentType()==CTHIS GetContentTypeXML()) )?"</li>":"\n")
 
 #if defined(__cplusplus)
 extern "C" {

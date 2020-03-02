@@ -28,13 +28,19 @@
 #include "xos/base/types.hpp"
 #include "xos/base/array.hpp"
 #include "xos/base/string.hpp"
+#include "xos/base/exception.hpp"
 #include "xos/base/to_string.hpp"
+#include "xos/io/string/reader.hpp"
+#include "xos/io/string/writer.hpp"
 #include "xos/io/read/file.hpp"
 
 namespace cifra {
 
 typedef xos::base::implement_base implement_base;
 typedef xos::base::base base;
+
+typedef ::xos::base::exception exception;
+static const exception exception_failed = ::xos::base::exception_failed;
 
 typedef ::xos::base::attacher_exception attacher_exception;
 static const attacher_exception failed_to_attach = ::xos::base::failed_to_attach;
@@ -72,10 +78,13 @@ typedef xos::base::char_to_string char_to_string;
 typedef xos::base::x_to_string x_to_string;
 
 namespace io {
+namespace string {
+typedef xos::io::string::reader reader;
+typedef xos::io::string::writer writer;
+} /// namespace string
+
 namespace read {
-
 typedef xos::io::read::file file;
-
 } // namespace read
 } // namespace io 
 
