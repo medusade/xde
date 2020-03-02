@@ -13,64 +13,64 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: uuidcgi.pro
+#   File: maccgi.pro
 #
 # Author: $author$
 #   Date: 3/2/2020
 #
-# QtCreator .pro file for xde executable uuidcgi
+# QtCreator .pro file for xde executable maccgi
 ########################################################################
 include(../../../../../build/QtCreator/xde.pri)
 include(../../../../QtCreator/xde.pri)
 include(../../xde.pri)
-include(../../../../QtCreator/app/uuidcgi/uuidcgi.pri)
+include(../../../../QtCreator/app/maccgi/maccgi.pri)
 
-TARGET = $${uuidcgi_TARGET}
+TARGET = $${maccgi_TARGET}
 
 ########################################################################
 # INCLUDEPATH
 #
 INCLUDEPATH += \
-$${uuidcgi_INCLUDEPATH} \
+$${maccgi_INCLUDEPATH} \
 
 # DEFINES
 # 
 DEFINES += \
-$${uuidcgi_DEFINES} \
+$${maccgi_DEFINES} \
 
 ########################################################################
 # OBJECTIVE_HEADERS
 #
 OBJECTIVE_HEADERS += \
-$${uuidcgi_OBJECTIVE_HEADERS} \
+$${maccgi_OBJECTIVE_HEADERS} \
 
 # OBJECTIVE_SOURCES
 #
 OBJECTIVE_SOURCES += \
-$${uuidcgi_OBJECTIVE_SOURCES} \
+$${maccgi_OBJECTIVE_SOURCES} \
 
 ########################################################################
 # HEADERS
 #
 HEADERS += \
-$${uuidcgi_HEADERS} \
+$${maccgi_HEADERS} \
 $${OBJECTIVE_HEADERS} \
 
 # SOURCES
 #
 SOURCES += \
-$${uuidcgi_SOURCES} \
+$${maccgi_SOURCES} \
 
 ########################################################################
 # FRAMEWORKS
 #
 FRAMEWORKS += \
-$${uuidcgi_FRAMEWORKS} \
+$${maccgi_FRAMEWORKS} \
 
 # LIBS
 #
 LIBS += \
-$${uuidcgi_LIBS} \
+$${maccgi_LIBS} \
 $${FRAMEWORKS} \
 
 

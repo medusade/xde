@@ -34,11 +34,13 @@ libxde_CONFIG += staticlib
 #
 libxde_INCLUDEPATH += \
 $${xde_INCLUDEPATH} \
+$${medusade_INCLUDEPATH} \
 
 # libxde DEFINES
 #
 libxde_DEFINES += \
 $${xde_DEFINES} \
+$${medusade_DEFINES} \
 
 ########################################################################
 # libxde OBJECTIVE_HEADERS
@@ -275,6 +277,12 @@ $${XDE_SRC}/clib/cyy/cyylexer.cxx \
 # libxde HEADERS
 #
 libxde_HEADERS += \
+$${XDE_SRC}/clib/cos/cplatform/cplatform_build.h \
+$${XDE_SRC}/clib/cos/cplatform/cplatform_include.h \
+$${XDE_SRC}/clib/cos/cplatform/cplatform_define.h \
+$${XDE_SRC}/clib/cos/cplatform/cplatform_type.h \
+$${XDE_SRC}/clib/cos/cplatform/cplatform_api.h \
+$${XDE_SRC}/clib/cos/cplatform/cplatform.h \
 $${XDE_SRC}/clib/cos/cplatform/cplatform_stat.h \
 $${XDE_SRC}/clib/cos/cplatform/cplatform_path.h \
 $${XDE_SRC}/clib/cos/cplatform/cplatform_file.h \
@@ -284,6 +292,7 @@ $${XDE_SRC}/clib/cos/cdebug_printf.h \
 # libxde SOURCES
 #
 libxde_SOURCES += \
+$${XDE_SRC}/clib/cos/cplatform/cplatform.c \
 $${XDE_SRC}/clib/cos/cplatform/cplatform_stat.c \
 $${XDE_SRC}/clib/cos/cplatform/cplatform_path.c \
 $${XDE_SRC}/clib/cos/cplatform/cplatform_file.c \

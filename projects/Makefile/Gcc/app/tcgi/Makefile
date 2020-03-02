@@ -46,6 +46,7 @@ ${xde_USRDEFINES} \
 #
 tcgi_USRINCLUDES += \
 ${xde_USRINCLUDES} \
+${medusade_USRINCLUDES} \
 
 #
 # user libdirs
@@ -73,6 +74,8 @@ ${xde_USRLIBDIRS} \
 tcgi_EXE_CXX_SOURCES += \
 ${XDE_SRC}/clib/ccgi/cgi.cxx \
 ${XDE_SRC}/clib/ct/ctcgi.cxx \
+${xde_crypto_CXX_SOURCES} \
+${xde_t_crypto_functions_CXX_SOURCES} \
 ${xde_t_functions_CXX_SOURCES} \
 
 #

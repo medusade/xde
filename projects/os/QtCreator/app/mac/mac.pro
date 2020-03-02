@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2019 $organization$
+# Copyright (c) 1988-2020 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -16,9 +16,9 @@
 #   File: mac.pro
 #
 # Author: $author$
-#   Date: 12/16/2019
+#   Date: 2/28/2020
 #
-# Os specific QtCreator project for medusaxde executable mac
+# QtCreator .pro file for xde executable mac
 ########################################################################
 include(../../../../../build/QtCreator/xde.pri)
 include(../../../../QtCreator/xde.pri)
@@ -72,4 +72,5 @@ $${mac_FRAMEWORKS} \
 LIBS += \
 $${mac_LIBS} \
 $${FRAMEWORKS} \
+
 

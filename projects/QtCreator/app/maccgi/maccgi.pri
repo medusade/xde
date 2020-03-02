@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2018 $organization$
+# Copyright (c) 1988-2020 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -13,70 +13,67 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: t.pri
+#   File: maccgi.pri
 #
 # Author: $author$
-#   Date: 11/14/2018
+#   Date: 3/2/2020
 #
-# QtCreator .pri file for xde executable t
+# QtCreator .pri file for xde executable maccgi
 ########################################################################
 
 ########################################################################
-# t
+# maccgi
 
-# t TARGET
+# maccgi TARGET
 #
-t_TARGET = t
+maccgi_TARGET = maccgi
 
-# t INCLUDEPATH
+# maccgi INCLUDEPATH
 #
-t_INCLUDEPATH += \
+maccgi_INCLUDEPATH += \
 $${xde_INCLUDEPATH} \
 $${medusade_INCLUDEPATH} \
 
-# t DEFINES
+# maccgi DEFINES
 #
-t_DEFINES += \
+maccgi_DEFINES += \
 $${xde_DEFINES} \
-$${medusade_DEFINES} \
 
 ########################################################################
-# t OBJECTIVE_HEADERS
+# maccgi OBJECTIVE_HEADERS
 #
-#t_OBJECTIVE_HEADERS += \
+#maccgi_OBJECTIVE_HEADERS += \
 #$${XDE_SRC}/xde/base/Base.hh \
 
-# t OBJECTIVE_SOURCES
+# maccgi OBJECTIVE_SOURCES
 #
-#t_OBJECTIVE_SOURCES += \
+#maccgi_OBJECTIVE_SOURCES += \
 #$${XDE_SRC}/xde/base/Base.mm \
 
 ########################################################################
-# t HEADERS
+# maccgi HEADERS
 #
-t_HEADERS += \
-$${XDE_SRC}/clib/ct/ctmain.hxx \
-$${XDE_SRC}/clib/cos/argmain.hxx \
-$${xde_t_function_HEADERS} \
-$${xde_t_crypto_function_HEADERS} \
+maccgi_HEADERS += \
+$${xde_crypto_HEADERS} \
+$${XDE_SRC}/clib/ccgi/cgi.hxx \
+$${XDE_SRC}/capp/ccgi/maccgi/cmaccgi.hxx \
 
-# t SOURCES
+# maccgi SOURCES
 #
-t_SOURCES += \
-$${XDE_SRC}/clib/ct/ctmain.cxx \
-$${XDE_SRC}/clib/cos/argmain.cxx \
-$${xde_t_function_SOURCES} \
-$${xde_t_crypto_function_SOURCES} \
+maccgi_SOURCES += \
+$${xde_crypto_SOURCES} \
+$${XDE_SRC}/clib/ccgi/cgi.cxx \
+$${XDE_SRC}/capp/ccgi/maccgi/cmaccgi.cxx \
 
 ########################################################################
-# t FRAMEWORKS
+# maccgi FRAMEWORKS
 #
-t_FRAMEWORKS += \
+maccgi_FRAMEWORKS += \
 $${xde_FRAMEWORKS} \
-$${medusade_FRAMEWORKS} \
 
-# t LIBS
+# maccgi LIBS
 #
-t_LIBS += \
+maccgi_LIBS += \
 $${xde_LIBS} \
-$${medusade_LIBS} \
+
+

@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2018 $organization$
+# Copyright (c) 1988-2020 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -16,9 +16,9 @@
 #   File: uuidcgi.pri
 #
 # Author: $author$
-#   Date: 11/26/2018
+#   Date: 3/2/2020
 #
-# QtCreator .pri file for medusaxde executable uuidcgi
+# QtCreator .pri file for xde executable uuidcgi
 ########################################################################
 
 ########################################################################
@@ -31,51 +31,49 @@ uuidcgi_TARGET = uuidcgi
 # uuidcgi INCLUDEPATH
 #
 uuidcgi_INCLUDEPATH += \
-$${medusaxde_INCLUDEPATH} \
+$${xde_INCLUDEPATH} \
+$${medusade_INCLUDEPATH} \
 
 # uuidcgi DEFINES
 #
 uuidcgi_DEFINES += \
-$${medusaxde_DEFINES} \
+$${xde_DEFINES} \
 
 ########################################################################
 # uuidcgi OBJECTIVE_HEADERS
 #
 #uuidcgi_OBJECTIVE_HEADERS += \
-#$${MEDUSAXDE_SRC}/medusaxde/base/Base.hh \
+#$${XDE_SRC}/xde/base/Base.hh \
 
 # uuidcgi OBJECTIVE_SOURCES
 #
 #uuidcgi_OBJECTIVE_SOURCES += \
-#$${MEDUSAXDE_SRC}/medusaxde/base/Base.mm \
+#$${XDE_SRC}/xde/base/Base.mm \
 
 ########################################################################
 # uuidcgi HEADERS
 #
 uuidcgi_HEADERS += \
-$${MEDUSAXDE_SRC}/capp/ccgi/cuuidcgi/cUuidCgi.hpp \
-\
-$${MEDUSAXDE_SRC}/clib/cos/cnetwork/cMacAddress.hpp \
-$${MEDUSAXDE_SRC}/clib/cos/cnetwork/cUuid.hpp \
+$${xde_crypto_HEADERS} \
+$${XDE_SRC}/capp/ccgi/uuidcgi/cuuidcgi.hxx \
 $${XDE_SRC}/clib/ccgi/cgi.hxx \
 
 # uuidcgi SOURCES
 #
 uuidcgi_SOURCES += \
-$${MEDUSAXDE_SRC}/clib/cos/cnetwork/cMacAddress.cpp \
-$${MEDUSAXDE_SRC}/clib/cos/cnetwork/cUuid.cpp \
+$${xde_crypto_SOURCES} \
+$${XDE_SRC}/capp/ccgi/uuidcgi/cuuidcgi.cxx \
 $${XDE_SRC}/clib/ccgi/cgi.cxx \
 
 ########################################################################
 # uuidcgi FRAMEWORKS
 #
 uuidcgi_FRAMEWORKS += \
-$${medusaxde_FRAMEWORKS} \
+$${xde_FRAMEWORKS} \
 
 # uuidcgi LIBS
 #
 uuidcgi_LIBS += \
-$${medusaxde_LIBS} \
 $${xde_LIBS} \
 
 

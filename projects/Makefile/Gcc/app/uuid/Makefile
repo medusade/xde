@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2018 $organization$
+# Copyright (c) 1988-2020 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -16,47 +16,42 @@
 #   File: Makefile
 #
 # Author: $author$
-#   Date: 11/14/2018
+#   Date: 3/2/2020
 #
-# generic Gcc Makefile for xde Executable t
+# generic Gcc Makefile for xde Executable uuid
 ########################################################################
 
 
 #
 # target
 #
-t_EXETARGET = t
+uuid_EXETARGET = uuid
 
 ########################################################################
 
 #
 # user c++ flags
 #
-t_USRCXXFLAGS += \
-${xos_USRCXXFLAGS} \
+uuid_USRCXXFLAGS += \
 ${xde_USRCXXFLAGS} \
-${medusade_USRCXXFLAGS} \
 
 #
 # user defines
 #
-t_USRDEFINES += \
-${xos_USRDEFINES} \
+uuid_USRDEFINES += \
 ${xde_USRDEFINES} \
-${medusade_USRDEFINES} \
 
 #
 # user includes
 #
-t_USRINCLUDES += \
-${xos_USRINCLUDES} \
+uuid_USRINCLUDES += \
 ${xde_USRINCLUDES} \
 ${medusade_USRINCLUDES} \
 
 #
 # user libdirs
 #
-t_USRLIBDIRS += \
+uuid_USRLIBDIRS += \
 ${xde_USRLIBDIRS} \
 
 ########################################################################
@@ -64,41 +59,39 @@ ${xde_USRLIBDIRS} \
 #
 # Executable .c sources
 #
-#t_EXE_C_SOURCES += \
+#uuid_EXE_C_SOURCES += \
 #${XDE_SRC}/xde/base/Base.c \
 
 #
 # Executable .cc sources
 #
-#t_EXE_CC_SOURCES += \
+#uuid_EXE_CC_SOURCES += \
 #${XDE_SRC}/xde/base/Base.cc \
 
 #
 # Executable .cxx sources
 #
-t_EXE_CXX_SOURCES += \
-${XDE_SRC}/clib/ct/ctmain.cxx \
-${XDE_SRC}/clib/cos/argmain.cxx \
+uuid_EXE_CXX_SOURCES += \
 ${xde_crypto_CXX_SOURCES} \
-${xde_t_crypto_functions_CXX_SOURCES} \
-${xde_t_functions_CXX_SOURCES} \
+${XDE_SRC}/clib/cos/argmain.cxx \
+${XDE_SRC}/capp/cnetwork/uuid/cuuidmain.cxx \
 
 #
 # Executable .cpp sources
 #
-#t_EXE_CPP_SOURCES += \
+#uuid_EXE_CPP_SOURCES += \
 #${XDE_SRC}/xde/base/Base.cpp \
 
 #
 # Executable .m sources
 #
-#t_EXE_M_SOURCES += \
+#uuid_EXE_M_SOURCES += \
 #${XDE_SRC}/xde/base/Base.m \
 
 #
 # Executable .mm sources
 #
-#t_EXE_MM_SOURCES += \
+#uuid_EXE_MM_SOURCES += \
 #${XDE_SRC}/xde/base/Base.mm \
 
 
@@ -107,8 +100,5 @@ ${xde_t_functions_CXX_SOURCES} \
 #
 # Executable libraries
 #
-t_LIBS += \
+uuid_LIBS += \
 ${xde_LIBS}
-
-
-

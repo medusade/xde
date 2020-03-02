@@ -88,15 +88,7 @@ xde_LIBS += \
 -L$${XDE_LIB}/lib$${XDE_NAME} \
 -l$${XDE_NAME} \
 
-# xde t function SOURCES
-#
-xde_t_function_SOURCES += \
-$${XDE_SRC}/clib/ct/ctfunctions.cxx \
-$${XDE_SRC}/clib/ct/ctfilefunctions.cxx \
-$${XDE_SRC}/clib/ct/ctdatefunctions.cxx \
-$${XDE_SRC}/clib/ct/ctconditionalfunctions.cxx \
-$${XDE_SRC}/clib/ct/ctstringfunctions.cxx \
-
+########################################################################
 # xde crypto HEADERS
 #
 xde_crypto_HEADERS += \
@@ -106,6 +98,8 @@ $${XDE_SRC}/clib/ccrypto/ccryptomd5.hxx \
 $${XDE_SRC}/clib/ccrypto/ccryptosha1.hxx \
 $${XDE_SRC}/clib/ccrypto/ccryptosha256.hxx \
 $${XDE_SRC}/clib/ccrypto/ccryptosha512.hxx \
+$${XDE_SRC}/clib/ccrypto/cmac.hxx \
+$${XDE_SRC}/clib/ccrypto/cuuid.hxx \
 
 # xde crypto SOURCES
 #
@@ -116,24 +110,86 @@ $${XDE_SRC}/clib/ccrypto/ccryptomd5.cxx \
 $${XDE_SRC}/clib/ccrypto/ccryptosha1.cxx \
 $${XDE_SRC}/clib/ccrypto/ccryptosha256.cxx \
 $${XDE_SRC}/clib/ccrypto/ccryptosha512.cxx \
+$${XDE_SRC}/clib/ccrypto/cmac.cxx \
+$${XDE_SRC}/clib/ccrypto/cuuid.cxx \
 
+########################################################################
 # xde t crypto function HEADERS
 #
 xde_t_crypto_function_HEADERS += \
+$${xde_crypto_HEADERS} \
 $${XDE_SRC}/clib/ct/ctcrypto/ctcryptohashfunction.hxx \
 $${XDE_SRC}/clib/ct/ctcrypto/ctmd5function.hxx \
 $${XDE_SRC}/clib/ct/ctcrypto/ctsha1function.hxx \
 $${XDE_SRC}/clib/ct/ctcrypto/ctsha256function.hxx \
 $${XDE_SRC}/clib/ct/ctcrypto/ctsha512function.hxx \
+$${XDE_SRC}/clib/ct/ctcrypto/ctmacfunction.hxx \
+$${XDE_SRC}/clib/ct/ctcrypto/ctuuidfunction.hxx \
 
 # xde t crypto function SOURCES
 #
 xde_t_crypto_function_SOURCES += \
+$${xde_crypto_SOURCES} \
 $${XDE_SRC}/clib/ct/ctcrypto/ctcryptohashfunction.cxx \
 $${XDE_SRC}/clib/ct/ctcrypto/ctmd5function.cxx \
 $${XDE_SRC}/clib/ct/ctcrypto/ctsha1function.cxx \
 $${XDE_SRC}/clib/ct/ctcrypto/ctsha256function.cxx \
 $${XDE_SRC}/clib/ct/ctcrypto/ctsha512function.cxx \
+$${XDE_SRC}/clib/ct/ctcrypto/ctmacfunction.cxx \
+$${XDE_SRC}/clib/ct/ctcrypto/ctuuidfunction.cxx \
+
+########################################################################
+# xde t string function HEADERS
+#
+xde_t_string_function_HEADERS += \
+$${XDE_SRC}/clib/ct/ctstring/ctparsefunction.hxx \
+$${XDE_SRC}/clib/ct/ctstring/ctleftparsefunction.hxx \
+$${XDE_SRC}/clib/ct/ctstring/ctrightparsefunction.hxx \
+
+# xde t string function SOURCES
+#
+xde_t_string_function_SOURCES += \
+$${XDE_SRC}/clib/ct/ctstring/ctparsefunction.cxx \
+$${XDE_SRC}/clib/ct/ctstring/ctleftparsefunction.cxx \
+$${XDE_SRC}/clib/ct/ctstring/ctrightparsefunction.cxx \
+
+########################################################################
+# xde t reflect function HEADERS
+#
+xde_t_reflect_function_HEADERS += \
+$${XDE_SRC}/clib/ct/ctreflect/ctfunctionfunction.hxx \
+
+# xde t reflect function SOURCES
+#
+xde_t_reflect_function_SOURCES += \
+$${XDE_SRC}/clib/ct/ctreflect/ctfunctionfunction.cxx \
+
+########################################################################
+# xde t function HEADERS
+#
+xde_t_function_HEADERS += \
+$${XDE_SRC}/clib/ct/ctfunctions.hxx \
+$${XDE_SRC}/clib/ct/ctfilefunctions.hxx \
+$${XDE_SRC}/clib/ct/ctdatefunctions.hxx \
+$${XDE_SRC}/clib/ct/ctconditionalfunctions.hxx \
+$${XDE_SRC}/clib/ct/ctstringfunctions.hxx \
+$${xde_t_string_function_HEADERS} \
+$${xde_t_reflect_function_HEADERS} \
+
+#$${xde_t_crypto_function_HEADERS} \
+
+# xde t function SOURCES
+#
+xde_t_function_SOURCES += \
+$${XDE_SRC}/clib/ct/ctfunctions.cxx \
+$${XDE_SRC}/clib/ct/ctfilefunctions.cxx \
+$${XDE_SRC}/clib/ct/ctdatefunctions.cxx \
+$${XDE_SRC}/clib/ct/ctconditionalfunctions.cxx \
+$${XDE_SRC}/clib/ct/ctstringfunctions.cxx \
+$${xde_t_string_function_SOURCES} \
+$${xde_t_reflect_function_SOURCES} \
+
+#$${xde_t_crypto_function_SOURCES} \
 
 ########################################################################
 # medusaxde
@@ -212,3 +268,29 @@ medusade_DEFINES += \
 # medusade LIBS
 #
 medusade_LIBS += \
+
+########################################################################
+# xos
+XOS_NAME = xos
+XOS_SOURCE = src/xos
+
+XOS_PKG = ../../../../..
+XOS_BLD = ../..
+
+XOS_PRJ = $${XOS_PKG}
+XOS_BIN = $${XOS_BLD}/bin
+XOS_LIB = $${XOS_BLD}/lib
+XOS_SRC = $${XOS_PKG}/$${XOS_SOURCE}
+
+# xos INCLUDEPATH
+#
+xos_INCLUDEPATH += \
+$${XOS_SRC} \
+
+# xos DEFINES
+#
+xos_DEFINES += \
+
+# xos LIBS
+#
+xos_LIBS += \

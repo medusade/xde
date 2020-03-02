@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2019 $organization$
+# Copyright (c) 1988-2020 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -16,9 +16,9 @@
 #   File: mac.pri
 #
 # Author: $author$
-#   Date: 12/16/2019
+#   Date: 2/28/2020
 #
-# generic QtCreator project for medusaxde executable mac
+# QtCreator .pri file for xde executable mac
 ########################################################################
 
 ########################################################################
@@ -31,52 +31,58 @@ mac_TARGET = mac
 # mac INCLUDEPATH
 #
 mac_INCLUDEPATH += \
-$${medusaxde_INCLUDEPATH} \
+$${xos_INCLUDEPATH} \
+$${xde_INCLUDEPATH} \
+$${medusade_INCLUDEPATH} \
 
 # mac DEFINES
 #
 mac_DEFINES += \
-$${medusaxde_DEFINES} \
+$${medusade_DEFINES} \
+$${xde_DEFINES} \
+$${xos_DEFINES} \
 
 ########################################################################
 # mac OBJECTIVE_HEADERS
 #
 #mac_OBJECTIVE_HEADERS += \
-#$${MEDUSAXDE_SRC}/medusaxde/base/base.hh \
+#$${XDE_SRC}/xde/base/Base.hh \
 
 # mac OBJECTIVE_SOURCES
 #
 #mac_OBJECTIVE_SOURCES += \
-#$${MEDUSAXDE_SRC}/medusaxde/base/base.mm \
+#$${XDE_SRC}/xde/base/Base.mm \
 
 ########################################################################
 # mac HEADERS
 #
 mac_HEADERS += \
-$${MEDUSAXDE_SRC}/clib/cos/cnetwork/cMacAddress.hpp \
-$${MEDUSAXDE_SRC}/clib/cos/cnetwork/cMacAddressString.hpp \
-\
-$${MEDUSAXDE_SRC}/capp/cconsole/cmac/cMacAddressMain.hpp \
+$${xde_crypto_HEADERS} \
+$${XDE_SRC}/clib/cos/argmain.hxx \
+$${XDE_SRC}/capp/cnetwork/mac/cmacmain.hxx \
+$${MEDUSADE_SRC}/cifra/network/ethernet/address.hpp \
+$${MEDUSADE_SRC}/cifra/network/ethernet/actual/address.hpp \
+$${MEDUSADE_SRC}/cifra/network/ethernet/posix/address.hpp \
+$${MEDUSADE_SRC}/cifra/network/ethernet/apple/osx/address.hpp \
+$${MEDUSADE_SRC}/cifra/network/ethernet/os/address.hpp \
 
 # mac SOURCES
 #
 mac_SOURCES += \
-$${MEDUSAXDE_SRC}/clib/cos/cnetwork/cMacAddressString.cpp \
-$${MEDUSAXDE_SRC}/clib/cos/cnetwork/cMacAddress.cpp \
-\
-$${MEDUSAXDE_SRC}/clib/cos/cMain_main.cpp \
-\
-$${MEDUSAXDE_SRC}/capp/cconsole/cmac/cMacAddressMain.cpp \
+$${xde_crypto_SOURCES} \
+$${XDE_SRC}/capp/cnetwork/mac/cmacmain.cxx \
+$${XDE_SRC}/clib/cos/argmain.cxx \
 
 ########################################################################
 # mac FRAMEWORKS
 #
 mac_FRAMEWORKS += \
-$${medusaxde_FRAMEWORKS} \
+$${xde_FRAMEWORKS} \
+$${medusade_FRAMEWORKS} \
 
 # mac LIBS
 #
 mac_LIBS += \
-$${medusaxde_LIBS} \
-
-
+$${xos_LIBS} \
+$${xde_LIBS} \
+$${medusade_LIBS} \

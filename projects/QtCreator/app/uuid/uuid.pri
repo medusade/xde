@@ -31,12 +31,16 @@ uuid_TARGET = uuid
 # uuid INCLUDEPATH
 #
 uuid_INCLUDEPATH += \
-$${medusaxde_INCLUDEPATH} \
+$${xos_INCLUDEPATH} \
+$${xde_INCLUDEPATH} \
+$${medusade_INCLUDEPATH} \
 
 # uuid DEFINES
 #
 uuid_DEFINES += \
-$${medusaxde_DEFINES} \
+$${medusade_DEFINES} \
+$${xde_DEFINES} \
+$${xos_DEFINES} \
 
 ########################################################################
 # uuid OBJECTIVE_HEADERS
@@ -53,29 +57,41 @@ $${medusaxde_DEFINES} \
 # uuid HEADERS
 #
 uuid_HEADERS += \
-$${MEDUSAXDE_SRC}/clib/cos/cnetwork/cMacAddress.hpp \
-$${MEDUSAXDE_SRC}/clib/cos/cnetwork/cUuid.hpp \
-\
-$${MEDUSAXDE_SRC}/capp/cconsole/cuuid/cUuidMain.hpp \
+$${xde_crypto_HEADERS} \
+$${MEDUSADE_SRC}/cifra/network/ethernet/address.hpp \
+$${MEDUSADE_SRC}/cifra/network/ethernet/actual/address.hpp \
+$${MEDUSADE_SRC}/cifra/network/ethernet/posix/address.hpp \
+$${MEDUSADE_SRC}/cifra/network/ethernet/apple/osx/address.hpp \
+$${MEDUSADE_SRC}/cifra/network/ethernet/microsoft/windows/address.hpp \
+$${MEDUSADE_SRC}/cifra/network/ethernet/os/address.hpp \
+$${MEDUSADE_SRC}/cifra/universal/unique/identifier.hpp \
+$${MEDUSADE_SRC}/cifra/universal/unique/posix/identifier.hpp \
+$${MEDUSADE_SRC}/cifra/universal/unique/apple/osx/identifier.hpp \
+$${MEDUSADE_SRC}/cifra/universal/unique/microsoft/windows/identifier.hpp \
+$${MEDUSADE_SRC}/cifra/universal/unique/os/identifier.hpp \
+$${XDE_SRC}/clib/cos/argmain.hxx \
+$${XDE_SRC}/capp/cnetwork/uuid/cuuidmain.hxx \
 
 # uuid SOURCES
 #
 uuid_SOURCES += \
-$${MEDUSAXDE_SRC}/clib/cos/cnetwork/cMacAddress.cpp \
-$${MEDUSAXDE_SRC}/clib/cos/cnetwork/cUuid.cpp \
-\
-$${MEDUSAXDE_SRC}/capp/cconsole/cuuid/cUuidMain.cpp \
-$${MEDUSAXDE_SRC}/clib/cos/cMain_main.cpp \
+$${xde_crypto_SOURCES} \
+$${XDE_SRC}/clib/cos/argmain.cxx \
+$${XDE_SRC}/capp/cnetwork/uuid/cuuidmain.cxx \
 
 ########################################################################
 # uuid FRAMEWORKS
 #
 uuid_FRAMEWORKS += \
+$${xos_FRAMEWORKS} \
+$${xde_FRAMEWORKS} \
 $${medusaxde_FRAMEWORKS} \
 
 # uuid LIBS
 #
 uuid_LIBS += \
-$${medusaxde_LIBS} \
+$${xos_LIBS} \
+$${xde_LIBS} \
+$${medusade_LIBS} \
 
 

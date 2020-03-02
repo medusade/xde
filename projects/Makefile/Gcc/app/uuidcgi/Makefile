@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2018 $organization$
+# Copyright (c) 1988-2020 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -16,47 +16,42 @@
 #   File: Makefile
 #
 # Author: $author$
-#   Date: 11/14/2018
+#   Date: 3/2/2020
 #
-# generic Gcc Makefile for xde Executable t
+# generic Gcc Makefile for xde Executable uuidcgi
 ########################################################################
 
 
 #
 # target
 #
-t_EXETARGET = t
+uuidcgi_EXETARGET = uuidcgi
 
 ########################################################################
 
 #
 # user c++ flags
 #
-t_USRCXXFLAGS += \
-${xos_USRCXXFLAGS} \
+uuidcgi_USRCXXFLAGS += \
 ${xde_USRCXXFLAGS} \
-${medusade_USRCXXFLAGS} \
 
 #
 # user defines
 #
-t_USRDEFINES += \
-${xos_USRDEFINES} \
+uuidcgi_USRDEFINES += \
 ${xde_USRDEFINES} \
-${medusade_USRDEFINES} \
 
 #
 # user includes
 #
-t_USRINCLUDES += \
-${xos_USRINCLUDES} \
+uuidcgi_USRINCLUDES += \
 ${xde_USRINCLUDES} \
 ${medusade_USRINCLUDES} \
 
 #
 # user libdirs
 #
-t_USRLIBDIRS += \
+uuidcgi_USRLIBDIRS += \
 ${xde_USRLIBDIRS} \
 
 ########################################################################
@@ -64,41 +59,39 @@ ${xde_USRLIBDIRS} \
 #
 # Executable .c sources
 #
-#t_EXE_C_SOURCES += \
+#uuidcgi_EXE_C_SOURCES += \
 #${XDE_SRC}/xde/base/Base.c \
 
 #
 # Executable .cc sources
 #
-#t_EXE_CC_SOURCES += \
+#uuidcgi_EXE_CC_SOURCES += \
 #${XDE_SRC}/xde/base/Base.cc \
 
 #
 # Executable .cxx sources
 #
-t_EXE_CXX_SOURCES += \
-${XDE_SRC}/clib/ct/ctmain.cxx \
-${XDE_SRC}/clib/cos/argmain.cxx \
+uuidcgi_EXE_CXX_SOURCES += \
 ${xde_crypto_CXX_SOURCES} \
-${xde_t_crypto_functions_CXX_SOURCES} \
-${xde_t_functions_CXX_SOURCES} \
+${XDE_SRC}/clib/ccgi/cgi.cxx \
+${XDE_SRC}/capp/ccgi/uuidcgi/cuuidcgi.cxx \
 
 #
 # Executable .cpp sources
 #
-#t_EXE_CPP_SOURCES += \
+#uuidcgi_EXE_CPP_SOURCES += \
 #${XDE_SRC}/xde/base/Base.cpp \
 
 #
 # Executable .m sources
 #
-#t_EXE_M_SOURCES += \
+#uuidcgi_EXE_M_SOURCES += \
 #${XDE_SRC}/xde/base/Base.m \
 
 #
 # Executable .mm sources
 #
-#t_EXE_MM_SOURCES += \
+#uuidcgi_EXE_MM_SOURCES += \
 #${XDE_SRC}/xde/base/Base.mm \
 
 
@@ -107,7 +100,7 @@ ${xde_t_functions_CXX_SOURCES} \
 #
 # Executable libraries
 #
-t_LIBS += \
+uuidcgi_LIBS += \
 ${xde_LIBS}
 
 
